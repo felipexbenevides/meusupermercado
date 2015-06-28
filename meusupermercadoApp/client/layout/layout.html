@@ -1,7 +1,7 @@
 <template name="layout">
-	<div class="navbar navbar-default" role="navigation">
+	<div class="navbar navbar-material-light-blue-300" role="navigation">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">Meu Supermercado</a>
+            <a class="navbar-brand" href="#"><img src="img/logoS.png" alt="Brand"/></a>
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
@@ -11,12 +11,58 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Início</a></li>
+                <li class="active"><a href="#">Receitas</a></li>
+                <li class="active"><a href="#">Listas Prontas</a></li>
+                <li class="active"><a href="#">Promoções</a></li>
+                
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 {{> loginButtons}} <!-- here -->
             </ul>
         </div>
+<<<<<<< HEAD
     </div>
-    {{> yield}}	
+=======
+    </div>	
+    <div>
+        <ul class="nav nav-pills">
+            <li role="presentation" class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                  Todos os produtos <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li role="presentation"><a href="#">Ofertas</a></li>
+                    <li role="presentation"><a href="#">Cereais</a></li>
+                    <li role="presentation"><a href="#">Carnes</a></li>
+                    <li role="presentation"><a href="#">Peixes</a></li>
+                    <li role="presentation"><a href="#">Laticineos</a></li>
+                    <li role="presentation"><a href="#">Biscoitos</a></li>
+                    <li role="presentation"><a href="#">Bebidas</a></li>    
+                    <li role="presentation"><a href="#">Massas</a></li>    
+                    <li role="presentation"><a href="#">Molhos</a></li> 
+                    <li role="presentation"><a href="#">Higiene</a></li>
+                    <li role="presentation"><a href="#">Material de limpeza</a></li>
+                    <li role="presentation"><a href="#">Padaria</a></li>
+                    <li role="presentation"><a href="#">Doces</a></li>
+                </ul>
+            </li>            
+                    <li role="presentation"><a href="#">Ofertas</a></li>
+                    <li role="presentation"><a href="#">Cereais</a></li>
+                    <li role="presentation"><a href="#">Carnes</a></li>
+                    <li role="presentation"><a href="#">Peixes</a></li>
+                    <li role="presentation"><a href="#">Laticineos</a></li>
+                    <li role="presentation"><a href="#">Frios</a></li>
+                    <li role="presentation"><a href="#">Biscoitos</a></li>
+                    <li role="presentation"><a href="#">Bebidas</a></li>    
+                    <li role="presentation"><a href="#">Massas</a></li>    
+                    <li role="presentation"><a href="#">Molhos</a></li> 
+                    <li role="presentation"><a href="#">Higiene</a></li>
+                    <li role="presentation"><a href="#">Limpeza</a></li>
+                    <li role="presentation"><a href="#">Padaria</a></li>
+                    <li role="presentation"><a href="#">Doces</a></li>
+            
+        </ul>    
+    </div>
+        {{> yield}}
+>>>>>>> d732f9e282c09f873a121ebc2f47162d9ca7a402
 </template>
