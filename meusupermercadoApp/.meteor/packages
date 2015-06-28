@@ -7,3 +7,7 @@
 meteor-platform
 autopublish
 insecure
+fezvrasta:bootstrap-material-design
+iron:router
+accounts-password
+accounts-ui
