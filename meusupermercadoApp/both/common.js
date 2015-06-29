@@ -5,6 +5,33 @@ Itens = new Mongo.Collection("itens");
 
 var Schemas = {};
 
+
+
+Schemas.Endereco = new SimpleSchema({
+    cidade:{
+        type: String,
+        optional: false
+    },
+    estado:{
+        type: String,
+        optional: false
+    },
+    bairro:{
+        type: String,
+        optional: false
+    },
+    cep:{
+        type: String,
+        optional: false
+        },
+    numero:{
+        type: Number,
+        min: 0,
+        optional: false
+    }
+});
+
+
 Schemas.Lojas = new SimpleSchema({
     nome:{
         type: String,
@@ -33,29 +60,6 @@ Schemas.Info = new SimpleSchema({
         }
 });
 
-Schemas.Endereco = new SimpleSchema({
-    cidade:{
-        type: String,
-        optional: false
-    },
-    estado:{
-        type: String,
-        optional: false
-    },
-    bairro:{
-        type: String,
-        optional: false
-    },
-    cep:{
-        type: String,
-        optional: false
-        },
-    numero:{
-        type: Number,
-        min: 0,
-        optional: false
-    }
-});
 
 Schemas.Produtos = new SimpleSchema({
     nome: {

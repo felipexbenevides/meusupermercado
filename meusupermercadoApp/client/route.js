@@ -5,4 +5,8 @@ Router.configure({
 Router.route('/', function () {
   this.render('home');
 });
+Router.route('/form', function () {
+  this.render('insertLojaForm');
+});
+
 
