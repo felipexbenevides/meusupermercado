@@ -1,0 +1,17 @@
+<template name="usuarioCadastro">
+  {{#if currentUser}}
+  <form>
+        <input type="text" name="nomeUsuario" placeholder="Nome">
+        <input type="text" name="sobrenomeUsuario" placeholder="Sobrenome">    
+        <input type="text" name="cpfUsuario" placeholder="CPF">
+        <input type="text" name="rua" placeholder="Rua">
+        <input type="text" name="numero" placeholder="Número">
+		<input type="text" name="complemento" placeholder="Complemento">
+		<input type="text" name="cep" placeholder="CEP">
+		<input type="text" name="cidade" placeholder="Cidade">
+		<input type="text" name="estado" placeholder="Estado">
+		<input type="text" name="pais" placeholder="País">  
+        <input type="submit" value="Adicionar">
+    </form>
+    {{/if}}
+</template>
