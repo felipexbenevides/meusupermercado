@@ -12,4 +12,8 @@ Router.route('/form', function () {
   this.render('cadastroLoja');
 });
 
+Router.route('/novoProduto', function(){
+  this.render('cadastroProduto');
+});
+
 

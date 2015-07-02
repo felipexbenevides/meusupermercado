@@ -1,37 +1,26 @@
 <template name="ofertas">
-
 	<div class="jumbotron">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-2">
-					<div class="panel panel-default">
-					    <div class="panel-heading">
-					    	Caldo de carne 57g
-					    </div>
-					    <div class="panel-body">
-					    	<img class="img-responsive" src="/img/itens/0001-knorr.jpg"  alt="Caldo Knorr">
-					        <div class="item-desc">
-					        	Dê um toque de chef para suas receitas com carnes
-					        </div>
-					    </div>
-					    <div class="panel-footer">
-					    	<b>
-					    		<span class='value1'>
-					    			R$
-					    		</span>
-					    		<span class='value2'>
-					    			2,
-					    		</span>
-					    		<span class='value3'>
-					    			99
-					    		</span>
-					    	</b>
-					    </div>
-					</div>	
-				</div>
-
-			</div>	
-		</div>		
+				{{#each produtos}}
+					<div class="col-lg-2">
+						<div class="panel panel-default">
+							<div class="panel-heading">{{nomeProduto}} - {{peso}}</div>
+							<div class="panel-body">
+								<img class="img-responsive" src="/img/itens/0001-knorr.jpg" alt="Caldo Knorr">
+								<div class="item-desc">{{descricao}}</div>
+							</div>
+							<div class="panel-footer">
+								<b>
+									<span class='value1'>R$</span>
+									<span class='value2'>2,</span>
+									<span class='value3'>99</span>
+								</b>
+							</div>
+						</div>
+					</div>
+				{{/each}}
+			</div>
+		</div>
 	</div>
-
 </template>
