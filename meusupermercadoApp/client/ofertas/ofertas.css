@@ -1,0 +1,37 @@
+.panel-body {
+  padding: 1px 0 15px 0;
+	font-family: Calibri;  
+}
+.panel-heading{
+	font-family:Hobo Std;
+}
+.value1{
+	font-size: 14px;
+	color: #b71c1c;
+}
+.value2{
+	font-size: 22px;
+	color: #ff5252;	
+}
+.value3{
+	font-size: 17px;	
+	color: #ff5252;
+}
+.value3, .value2, .value1{
+	font-family: Calibri;
+}
+.container .row{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;     
+}
+.jumbotron{
+    margin-bottom: 2px;
+}
+.item-desc{
+
+	margin:5px 5px 0 5px;
+    /*display: block;*/
+    text-align: justify;
+ 
+}

@@ -5,6 +5,9 @@ Router.configure({
 Router.route('/', function () {
   this.render('home');
 });
+Router.route('/ofertas', function () {
+  this.render('ofertas');
+});
 Router.route('/form', function () {
   this.render('insertLojaForm');
 });
