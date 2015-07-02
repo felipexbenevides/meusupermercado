@@ -14,4 +14,9 @@ ian:accounts-ui-bootstrap-3
 aldeed:collection2
 aldeed:autoform
 aldeed:simple-schema
+<<<<<<< HEAD
 fezvrasta:bootstrap-material-design-fullpalette
+=======
+urigo:angular
+joshowens:simple-form
+>>>>>>> origin/master

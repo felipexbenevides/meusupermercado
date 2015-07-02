@@ -9,7 +9,7 @@ Router.route('/ofertas', function () {
   this.render('ofertas');
 });
 Router.route('/form', function () {
-  this.render('insertLojaForm');
+  this.render('cadastroLoja');
 });
 
 
