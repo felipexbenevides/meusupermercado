@@ -1,4 +1,5 @@
 Produtos = new Mongo.Collection("produtos");
+Lojas = new Mongo.Collection("lojas");
 
 /*
 var Schemas = {};
