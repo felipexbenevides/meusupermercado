@@ -6,7 +6,7 @@ Router.route('/', function () {
   this.render('home');
 });
 Router.route('/form', function () {
-  this.render('usuarioCadastro');
+  this.render('cadastroProduto');
 });
 
 

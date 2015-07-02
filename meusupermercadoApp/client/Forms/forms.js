@@ -17,11 +17,27 @@ if (Meteor.isClient) {
             var endereco = { 'rua': rua, 'numero': numero, 'complemento': complemento, 'cep': cep, 'cidade': cidade, 'estado': estado, 'pais': pais };
 
             Meteor.users.update({ _id: Meteor.userId() }, { $set: { 'nomeUsuario': nomeUsuario, 'sobrenomeUsuario': sobrenomeUsuario, 'cpfUsuario': cpfUsuario, 'endereco': endereco } });
-            console.log(Meteor.users.findOne({ _id: Meteor.userId() }));
+            //console.log(Meteor.users.findOne({ _id: Meteor.userId() }));
         }
     });
 
-    Template.cadastroInfoNut.events({
+    Template.cadastroProduto.events({
+        'submit form': function (event) {
+            event.preventDefault();
+            
+            var nomeProduto = event.target.nomeProduto.value;
+            var descricaoProduto = event.target.descricaoProduto.value;
+            var peso = event.target.peso.value;
+            var grupo = event.target.grupo.value;
+            var subgrupo = event.target.subgrupo.value;
+            
+            var valorEnergetico = event.target.valorEnergetico.value;
+            var carboidratos = event.target.carboidratos.value;
+            var sodio = event.target.sodio.value;
+            
+            Produtos.insert({nomeProduto: nomeProduto, descricaoProduto: descricaoProduto, peso: peso, grupo : grupo, subgrupo: subgrupo, valorEnergetico: valorEnergetico, carboidratos:carboidratos, sodio: sodio, criadoEm: new Date(), atualizadoEm: new Date()});
+            //db.Produtos.find().forEach( function(myDoc) { console.log(myDoc); } );
+        }
 
     });
 
