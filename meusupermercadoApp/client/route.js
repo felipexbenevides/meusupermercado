@@ -11,7 +11,15 @@ Router.route('/ofertas', function () {
 Router.route('/form', function () {
   this.render('cadastroLoja');
 });
-
+Router.route('/cadloja', function () {
+  this.render('cadastroLoja');
+});
+Router.route('/cadprod', function () {
+  this.render('cadastroProduto');
+});
+Router.route('/cadusu', function () {
+  this.render('cadastroUsuario');
+});
 Router.route('/novoProduto', function(){
   this.render('cadastroProduto');
 });
