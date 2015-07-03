@@ -25,7 +25,7 @@ Schemas.Info = new SimpleSchema({
 });
 */
 
-Endereco = {
+Schemas.Endereco = new SimpleSchema({
     cep: {
         type: String,
         label: "CEP",
@@ -62,7 +62,14 @@ Endereco = {
         label: "Estado",
         optional: false
     }
-};
+});
+
+Schemas.Grupos = new SimpleSchema({
+    nomeGrupo: {
+        type: String,
+        label: "Nome do Grupo",
+    }
+});
 
 Schemas.Produtos = new SimpleSchema({
     nome: {
@@ -94,14 +101,14 @@ Schemas.Produtos = new SimpleSchema({
         optional: true
     },
     grupo: {
-        type: Grupos,
+        type: Schemas.Grupos,
         optional: true
     }
 });
 
-Vendas = {
+Schemas.Vendas = new SimpleSchema({
     produto: {
-        type: Produtos._id,
+        type: Schemas.Produtos._id,
         optional: false
     },
     preco: {
@@ -120,11 +127,11 @@ Vendas = {
         type: Meteor.users._id,
         optional: false
     }
-};
+});
 
-Estoque = {
+Schemas.Estoque = new SimpleSchema({
     produto: {
-        type: Produtos._id,
+        type: Schemas.Produtos._id,
         optional: false
     },
     preco: {
@@ -139,7 +146,7 @@ Estoque = {
         type: Number,
         optional: true
     }
-};
+});
 
 Schemas.Lojas = new SimpleSchema({
     nome: {
@@ -154,38 +161,39 @@ Schemas.Lojas = new SimpleSchema({
         optional: false
     },
     endereco: {
-        type: Endereco
+        type: Schemas.Endereco
     },
     administrador: {
-        type: Meteor.users,
+        type: Meteor.users._id,
         optional: false
     },
     estoque: {
-        type: [Estoque]
+        type: [Schemas.Estoque]
     },
     vendas: {
-        type: [Vendas]
+        type: [Schemas.Vendas]
     }
 });
 
-quantidadeProdutos = {
+
+Schemas.QuantidadeProdutos = new SimpleSchema({
     loja: {
-        type: Lojas
+        type: Schemas.Lojas
     },
     produto: {
-        type: Produtos
+        type: Schemas.Produtos
     },
     quantidade: {
         type: Number
     }
-};
+});
 
-Transferencias = {
+Schemas.Transferencias = new SimpleSchema({
     usuario: {
         type: Meteor.users._id
     },
     produtos: {
-        type: [quantidadeProdutos],
+        type: [Schemas.QuantidadeProdutos],
         label: "Itens comprados",
         optional: false
     },
@@ -194,7 +202,7 @@ Transferencias = {
         label: "Criada Em",
         optional: false
     }
-};
+});
 
 Schemas.Usuarios = new SimpleSchema({
     primeiroNome: {
@@ -213,17 +221,17 @@ Schemas.Usuarios = new SimpleSchema({
         optional: false
     },
     endereco: {
-        type: Endereco,
+        type: Schemas.Endereco,
         label: "Endereço",
         optional: true
     },
     itensComprados: {
-        type: [Transferencias],
+        type: [Schemas.Transferencias],
         label: "Itens comprados",
         optional: true
     },
     listasCompras: {
-        type: [quantidadeProdutos],
+        type: [Schemas.QuantidadeProdutos],
         label: "Listas de Compras",
         optional: true
     },
@@ -234,17 +242,10 @@ Schemas.Usuarios = new SimpleSchema({
     }
 });
 
-Schemas.Grupos = new SimpleSchema({
-    nomeGrupo: {
-        type: String,
-        label: "Nome do Grupo",
-    }
-});
-
-
-
 Grupos.attachSchema(Schemas.Grupos);
 Produtos.attachSchema(Schemas.Produtos);
 Lojas.attachSchema(Schemas.Lojas);
-Meteor.users.attachSchema(Schemas.Usuario);
+Meteor.users.attachSchema(Schemas.Usuarios);
+
+
 
