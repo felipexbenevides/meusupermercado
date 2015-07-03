@@ -16,4 +16,3 @@ Router.route('/novoProduto', function(){
   this.render('cadastroProduto');
 });
 
-
