@@ -64,14 +64,14 @@ if (Meteor.isClient) {
             Lojas.find().forEach(function (myDoc) { console.log(myDoc); });
         }
     });
-    Template.cadastroUsuario.events({
-        'blur input' : function(event){
-            $.getJSON("http://viacep.com.br/ws/01001000/json/", function(result){
-                $.each(result, function(i, field){
-                    alert(field);
-                });
-            });            
+    // Template.cadastroUsuario.events({
+    //     'blur input' : function(event){
+    //         $.getJSON("http://viacep.com.br/ws/01001000/json/", function(result){
+    //             $.each(result, function(i, field){
+    //                 alert(field);
+    //             });
+    //         });            
              
-        }
-    });
+    //     }
+    // });
 }
