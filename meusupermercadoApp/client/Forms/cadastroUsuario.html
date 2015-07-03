@@ -1,6 +1,99 @@
 <template name="cadastroUsuario">
   {{#if currentUser}}
-  <form>
+   <div class="">
+        <div class="container">
+
+            <div class="col-lg-6">
+            <div class="well well-lg">                     
+                            <form class="form-horizontal">
+                                <fieldset>
+                                    <legend>Cadastro de Usuário</legend>
+                                    <!-- NOME USUARIO-->
+                                    <div class="form-group">
+                                        <label for="inputNome" class="col-lg-2 control-label">Nome</label>
+                                        <div class="col-lg-10">
+                                            <input name="nomeUsuario" type="" class="form-control" id="inputNome" placeholder="Nome do usuário">
+                                        </div>
+                                    </div>
+                                    <!-- SOBRENOME-->
+                                    <div class="form-group">
+                                        <label for="inputSobrenome" class="col-lg-2 control-label">Sobrenome</label>
+                                        <div class="col-lg-10">
+                                            <input name="sobrenomeUsuario" type="" class="form-control" id="inputSobrenome" placeholder="Sobrenome">
+                                        </div>
+                                    </div>    
+                                    <!-- cpfUsuario-->
+                                    <div class="form-group">
+                                        <label for="inputCPF" class="col-lg-2 control-label">CPF</label>
+                                        <div class="col-lg-10">
+                                            <input name="cpfUsuario" type="" class="form-control" id="" placeholder="CPF">
+                                        </div>
+                                    </div>                                      
+                                    <!-- RUA -->
+                                    <div class="form-group">
+                                        <label for="inputRua" class="col-lg-2 control-label">Rua</label>
+                                        <div class="col-lg-10">
+                                            <input name="rua" type="" class="form-control" id="inputRua" placeholder="Rua">
+                                        </div>
+                                    </div> 
+                                    <!-- NUMERO -->  
+                                    <div class="form-group">
+                                        <label for="inputNum" class="col-lg-2 control-label">Número</label>
+                                        <div class="col-lg-10">
+                                            <input name="numero" type="" class="form-control" id="inputNum" placeholder="Número">
+                                        </div>
+                                    </div> 
+                                    <!-- COMPLEMENTO -->
+                                    <div class="form-group">
+                                        <label for="inputComp" class="col-lg-2 control-label">Comp.</label>
+                                        <div class="col-lg-10">
+                                            <input name="complemento" type="" class="form-control" id="inputComp" placeholder="Complemento">
+                                        </div>
+                                    </div> 
+                                    <!-- CEP -->
+                                    <div class="form-group">
+                                        <label for="inputCEP" class="col-lg-2 control-label">CEP</label>
+                                        <div class="col-lg-10">
+                                            <input name="cep" type="" class="form-control" id="inputCEP" placeholder="CEP">
+                                        </div>
+                                    </div> 
+                                    <!-- CIDADE -->
+                                    <div class="form-group">
+                                        <label for="inputCidade" class="col-lg-2 control-label">Cidade</label>
+                                        <div class="col-lg-10">
+                                            <input name="cidade" type="" class="form-control" id="inputCidade" placeholder="Cidade">
+                                        </div>
+                                    </div> 
+                                    <!-- ESTADO -->
+                                    <div class="form-group">
+                                        <label for="inputEstado" class="col-lg-2 control-label">Estado</label>
+                                        <div class="col-lg-10">
+                                            <input name="estado" type="" class="form-control" id="inputEstado" placeholder="Estado">
+                                        </div>
+                                    </div> 
+                                    <!-- PAIS -->
+                                    <div class="form-group">
+                                        <label for="inputPais" class="col-lg-2 control-label">País</label>
+                                        <div class="col-lg-10">
+                                            <input name="pais" type="" class="form-control" id="inputPais" placeholder="País">
+                                        </div>
+                                    </div>                                              
+                                    <!-- - - - - - - - - - - - - - - - - - - - - - -  - -->                                 
+                                    
+                                    <div class="form-group">
+                                        <div class="col-lg-10 col-lg-offset-2">
+                                            <button class="btn btn-default">Cancel</button>
+                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        <div id="source-button" class="btn btn-primary btn-xs" style="display: none;">&lt; &gt;</div>
+                    </div>
+                </div>
+</div>
+</div>      
+<!--   <form>
         <input type="text" name="nomeUsuario" placeholder="Nome">
         <input type="text" name="sobrenomeUsuario" placeholder="Sobrenome">    
         <input type="text" name="cpfUsuario" placeholder="CPF">
@@ -12,6 +105,23 @@
 		<input type="text" name="estado" placeholder="Estado">
 		<input type="text" name="pais" placeholder="País">  
         <input type="submit" value="Adicionar">
-    </form>
+    </form> -->
     {{/if}}
+ 
+    <!-- Inicio do formulario -->
+      <form method="get" action=".">
+        <label>Cep:
+        <input name="cep" type="text" id="cep" value="" size="10" maxlength="9" /></label><br />
+        <label>Rua:
+        <input name="rua" type="text" id="rua" size="60" /></label><br />
+        <label>Bairro:
+        <input name="bairro" type="text" id="bairro" size="40" /></label><br />
+        <label>Cidade:
+        <input name="cidade" type="text" id="cidade" size="40" /></label><br />
+        <label>Estado:
+        <input name="uf" type="text" id="uf" size="2" /></label><br />
+        <label>IBGE:
+        <input name="ibge" type="text" id="ibge" size="8" /></label><br />
+      </form>
+    
 </template>
