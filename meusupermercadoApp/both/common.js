@@ -104,7 +104,7 @@ Schemas.Usuarios = new SimpleSchema({
    criadoEm:{
        type: Date,
        label: "Criado Em",
-       optional: true
+       optional: false
    }
 });
 
@@ -113,8 +113,18 @@ Schemas.Transferencias = new SimpleSchema({
        type: Meteor.users._id
    },
    loja:{
-       type: Lojas._id
+       type:
    },
+   produtos:{
+       type: [quantidadeProdutos],
+       label: "Itens comprados"
+       optional: false
+   },
+   dataTransferencia:{
+       type: Date,
+       label: "Criada Em",
+       optional: false
+   }
 });
 
 
