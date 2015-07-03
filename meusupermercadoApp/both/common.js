@@ -22,6 +22,115 @@ Schemas.Info = new SimpleSchema({
         }
 });
 
+
+
+*/
+
+Schemas.Produtos = new SimpleSchema({
+    nome: {
+        type: String,
+        label: "Nome",
+        max: 200
+    },
+    descricao: {
+        type: String,
+        label: "Descrição dos Produtos",
+        max: 500,
+		optional: true
+    },
+    criadoEm: {
+        type: Date,
+        label: "Registro criado",
+		denyUpdate: true
+    },
+    peso: {
+       type: Number,
+       decimal: false  
+    },
+    infoNutricional:{
+        type: String,
+        optional: true    
+    },
+    marca:{
+        type: String,
+        optional: true
+    },
+    grupo:{
+        type: Grupos,
+        optional: true
+    }
+});
+
+quantidadeProdutos = {
+    produto:{
+        type: Produtos    
+    },
+    quantidade:{
+        type: Number
+    }
+}
+
+Schemas.Usuarios = new SimpleSchema({
+   primeiroNome:{
+       type: String,
+       label: "Primeiro Nome",
+       optional: false
+   },
+   Sobrenome:{
+       type: String,
+       label: "Sobrenome",
+       optional: false
+   },
+   cpf:{
+       type: String,
+       label: "CPF",
+       optional: false
+   },
+   endereco:{
+     type: Schemas.Endereco,
+     label: "Endereço",
+     optional: true  
+   },
+   itensComprados:{
+       type: [quantidadeProdutos],
+       label: "Itens comprados",
+       optional: true
+   },
+   listasCompras:{
+       type: [quantidadeProdutos],
+       label: "Listas de Compras",
+       optional: true
+   },
+   criadoEm:{
+       type: Date,
+       label: "Criado Em",
+       optional: true
+   }
+});
+
+Schemas.Transferencias = new SimpleSchema({
+   usuario:{
+       type: Meteor.users._id
+   },
+   loja:{
+       type: Lojas._id
+   },
+});
+
+
+Schemas.Listas = new SimpleSchema({
+    usuario:{
+        type: Usuario,
+        label: "Usuário",
+        optional:false
+    },
+    itensDaLista:{
+        type: [Schema.Itens],
+        label: "Lista de Itens",
+        optional: false
+    }
+});
+
 Schemas.Endereco = new SimpleSchema({
     cep:{
         type: String,
@@ -58,63 +167,9 @@ Schemas.Endereco = new SimpleSchema({
         type: String,
         label: "Estado",
         optional: false
-    },
-    pais:{
-        type: String,
-        label: "País",
-        optional: false
-    },
-    
+    }
 });
 
-Schemas.Usuarios = new SimpleSchema({
-   primeiroNome:{
-       type: String,
-       label: "Primeiro Nome",
-       optional: false
-   },
-   Sobrenome:{
-       type: String,
-       label: "Sobrenome",
-       optional: false
-   },
-   cpf:{
-       type: String,
-       label: "CPF",
-       optional: false
-   },
-   senha:{
-       type: String,
-       label: "Senha",
-       optional: false
-   },
-   email:{
-       type: String,
-       label: "Email",
-       regEx: SimpleSchema.RegEx.Email,
-       optional: false
-   },
-   endereco:{
-     type: Schemas.Endereco,
-     label: "Endereço",
-     optional: true  
-   },
-   itensComprados:{
-       type: [Schemas.Itens],
-       label: "Itens adquiridos",
-       optional: true
-   },
-   listasCompras:{
-       type: [Schemas.Listas],
-       label: "Listas de Compras",
-       optional: true
-   },
-   criadoEm:{
-       type: Date,
-       label: "Criado Em",
-       optional: true
-   }
-});
 
 Schemas.Lojas = new SimpleSchema({
     nome:{
@@ -132,87 +187,44 @@ Schemas.Lojas = new SimpleSchema({
         type: Schemas.Endereco
     },
     administrador:{
-        type: Schemas.Usuarios
+        type: Meteor.users,
+        optional: false
     }   
 });
 
-Schemas.Itens = new SimpleSchema({
-    codBar: {
-        type: String,
-        label: "Código de Barras"
-    },
-    criadoEm: {
-        type: Date,
-        label: "Registro criado",
-		denyUpdate: true
-    },
-    vendidoEm: {
-        type: Date,
-        label: "Item Vendido",
-		denyUpdate: true
-    },
-	loja: {
-		type: Schemas.Lojas,  
-	},
-    preco: {
-        type: Number,
-        decimal: false
-    }
-});
-
-Schemas.Listas = new SimpleSchema({
-    usuario:{
-        type: Usuario,
-        label: "Usuário",
-        optional:false
-    },
-    itensDaLista:{
-        type: [Schema.Itens],
-        label: "Lista de Itens",
-        optional: false
-    }
+Schemas.Grupos = new SimpleSchema({
+   nomeGrupo:{
+       type: String,
+       label: "Nome do Grupo",
+   } 
 });
 
 
 
-
-Schemas.Produtos = new SimpleSchema({
-    nome: {
-        type: String,
-        label: "Nome",
-        max: 200
-    },
-    descricao: {
-        type: String,
-        label: "Descrição dos Produtos",
-        max: 500,
-		optional: true
-    },
-    criadoEm: {
-        type: Date,
-        label: "Registro criado",
-		denyUpdate: true
-    },
-    peso: {
+Schemas.Estoque = new SimpleSchema({
+   loja: {
+       type: Lojas._id,
+       optional: false
+   },
+   produto: {
+       type: Produtos._id,
+       optional: false
+   },
+   preco: {
+       type: String,
+       optional: false
+   },
+   quantidadeItens: {
        type: Number,
-       decimal: false  
-    },
-	itens: {
-		type: [Itens],  
-	},
-    infoNutricional:{
-        type: Schemas.Info    
-    },
-    grupo:{
-        type: String,
-        optional: true
-    },
-    subgrupo:{
-        type: String,
-        optional: true
-    }
+       optional: false
+   },
+   desconto: {
+       type: Number,
+       optional: true
+   } 
 });
 
+/*
 
 Stores.attachSchema(Schemas.Lojas);
 Produtos.attachSchema(Schemas.Produtos);
