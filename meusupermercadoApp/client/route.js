@@ -8,8 +8,16 @@ Router.route('/', function () {
 Router.route('/ofertas', function () {
   this.render('ofertas');
 });
-Router.route('/form', function () {
+Router.route('/cadloja', function () {
   this.render('cadastroLoja');
 });
+Router.route('/cadprod', function () {
+  this.render('cadastroProduto');
+});
+Router.route('/cadusu', function () {
+  this.render('cadastroUsuario');
+});
+
+
 
 
