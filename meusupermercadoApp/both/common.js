@@ -5,26 +5,6 @@ Grupos = new Mongo.Collection("grupos");
 
 var Schemas = {};
 
-/*
-Schemas.Info = new SimpleSchema({
-    valorEnergetico: {
-            type: String,
-            label:"Valor Energético",
-            optional: true            
-        },
-        carboidratos: {
-            type: String,
-            label:"Carboidratos",
-            optional:true
-        },
-        sodio: {
-            type: String,
-            label:"Sódio",
-            optional: true
-        }
-});
-*/
-
 Schemas.Endereco = new SimpleSchema({
     cep: {
         type: String,
@@ -102,11 +82,11 @@ Schemas.Produtos = new SimpleSchema({
     },
     grupo: {
         type: Schemas.Grupos,
-        optional: true
+        optional: false
     }
 });
 
-Schemas.Vendas = new SimpleSchema({
+Schemas.Item = new SimpleSchema({
     produto: {
         type: Schemas.Produtos._id,
         optional: false
@@ -114,6 +94,52 @@ Schemas.Vendas = new SimpleSchema({
     preco: {
         type: String,
         optional: false
+    },
+    codBarras:{
+        type: String,
+        optional: false      
+    },
+    desconto: {
+        type: Number,
+        optional: true
+    },
+    quantidade:{
+        type: Number,
+        optional: false
+    }
+});
+
+Schemas.ItemVendido = new SimpleSchema({
+    item:{
+        type: Schemas.Item._id,
+        optional: false
+    },
+    preco:{
+        type: Schemas.Item.preco,
+        optional: false
+    },
+    desconto:{
+        type: Schemas.Item.desconto,
+        optional: true
+    },
+    codBarras:{
+        type: Schemas.Item.codBarras,
+        optional: false
+    }    
+});
+
+Schemas.Vendas = new SimpleSchema({
+    itensVendidos: {
+        type: [Schemas.ItemVendido],
+        optional: false  
+    },
+    cupomPromocional:{
+        type: String,
+        optional: true  
+    },
+    valorTotal:{
+        type: Number,
+        optional: false    
     },
     desconto: {
         type: Number,
@@ -121,32 +147,20 @@ Schemas.Vendas = new SimpleSchema({
     },
     dataVenda: {
         type: Date,
-        optional: false
+        optional: false,
+        denyUpdates: true
     },
     comprador: {
         type: Meteor.users._id,
         optional: false
-    }
-});
-
-Schemas.Estoque = new SimpleSchema({
-    produto: {
-        type: Schemas.Produtos._id,
-        optional: false
     },
-    preco: {
-        type: String,
-        optional: false
-    },
-    quantidadeItens: {
-        type: Number,
-        optional: false
-    },
-    desconto: {
-        type: Number,
+    formasPagamento:{
+        type: [String],
         optional: true
     }
 });
+
+
 
 Schemas.Lojas = new SimpleSchema({
     nome: {
@@ -168,7 +182,7 @@ Schemas.Lojas = new SimpleSchema({
         optional: false
     },
     estoque: {
-        type: [Schemas.Estoque]
+        type: [Schemas.Item]
     },
     vendas: {
         type: [Schemas.Vendas]
@@ -176,27 +190,19 @@ Schemas.Lojas = new SimpleSchema({
 });
 
 
-Schemas.QuantidadeProdutos = new SimpleSchema({
+Schemas.ListaProdutosPorLoja = new SimpleSchema({
     loja: {
         type: Schemas.Lojas
     },
-    produto: {
-        type: Schemas.Produtos
-    },
-    quantidade: {
-        type: Number
+    itens: {
+        type: [Schemas.Item]
     }
 });
 
 Schemas.Transferencias = new SimpleSchema({
-    usuario: {
-        type: Meteor.users._id
-    },
-    produtos: {
-        type: [Schemas.QuantidadeProdutos],
-        label: "Itens comprados",
-        optional: false
-    },
+    ListaProdutos:{
+        type: [Schema.ListaProdutosPorLoja]
+    },  
     dataTransferencia: {
         type: Date,
         label: "Criada Em",
@@ -231,7 +237,7 @@ Schemas.Usuarios = new SimpleSchema({
         optional: true
     },
     listasCompras: {
-        type: [Schemas.QuantidadeProdutos],
+        type: [Schemas.Transferencias],
         label: "Listas de Compras",
         optional: true
     },
