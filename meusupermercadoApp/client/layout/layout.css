@@ -20,6 +20,10 @@
     margin-right: auto; 
     float: none;
 }
+
+.engine-light-grey{
+  color: rgb(204,204,204);
+}
 /*.navbar-material-grey-800.navbar {
   background-color: #424242;
   color: rgba(255, 255, 255, 0.84);

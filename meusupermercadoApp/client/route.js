@@ -23,4 +23,7 @@ Router.route('/cadusu', function () {
 Router.route('/novoProduto', function(){
   this.render('cadastroProduto');
 });
+Router.route('/meuPerfil', function(){
+  this.render('meuPerfil');
+});
 
