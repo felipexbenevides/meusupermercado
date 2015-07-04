@@ -148,7 +148,7 @@ Schemas.Vendas = new SimpleSchema({
     dataVenda: {
         type: Date,
         optional: false,
-        denyUpdates: true
+        denyUpdate: true
     },
     comprador: {
         type: Meteor.users._id,
@@ -201,12 +201,13 @@ Schemas.ListaProdutosPorLoja = new SimpleSchema({
 
 Schemas.Transferencias = new SimpleSchema({
     ListaProdutos:{
-        type: [Schema.ListaProdutosPorLoja]
+        type: [Schemas.ListaProdutosPorLoja]
     },  
     dataTransferencia: {
         type: Date,
         label: "Criada Em",
-        optional: false
+        optional: false,
+        denyUpdate: true
     }
 });
 
