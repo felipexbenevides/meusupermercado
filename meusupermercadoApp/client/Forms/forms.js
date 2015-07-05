@@ -98,6 +98,7 @@ if (Meteor.isClient) {
         $("#inputBairro").val(Lojas.findOne({ administrador: Meteor.userId()}).endereco.bairro);
         $("#inputCidade").val(Lojas.findOne({ administrador: Meteor.userId()}).endereco.cidade);
         $("#inputEstado").val(Lojas.findOne({ administrador: Meteor.userId()}).endereco.estado);
+        $('#inputUsuario').attr("placeholder",Meteor.users.findOne({_id : Meteor.userId()}).emails[0].address);
         $('#inputUsuario').attr("disabled",true);
         });
         
@@ -115,7 +116,7 @@ if (Meteor.isClient) {
             var bairro = event.target.inputBairro.value;
             var cidade = event.target.inputCidade.value;
             var estado = event.target.inputEstado.value;
-
+            
             var endereco = { 'rua': rua, 'numero': numero, 'complemento': complemento, 'cep': cep,'bairro': bairro, 'cidade': cidade, 'estado': estado };
             //console.log(Meteor.users.findOne({ _id: Meteor.userId() }));
             //var admin = Meteor.users.findOne({ "emails.address": event.target.administrador.value });
