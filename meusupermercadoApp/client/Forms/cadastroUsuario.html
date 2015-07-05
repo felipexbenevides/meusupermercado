@@ -1,51 +1,47 @@
-<template name="cadastroUsuario">
-  {{#if currentUser}}
-   <div class="">
+<template name="cadastroUsuario">{{#if currentUser}}
+    <div class="">
         <div class="container">
-
-            <div class="col-lg-6">
-            <div class="well well-lg">                     
-                            <form class="form-horizontal">
-                                <fieldset>
-                                    <legend>Cadastro de Usuário</legend>
-                                    <!-- NOME USUARIO-->
-                                    <div class="form-group">
-                                        <label for="inputNome" class="col-lg-2 control-label">Nome</label>
-                                        <div class="col-lg-10">
-                                            <input name="nomeUsuario" type="" class="form-control" id="inputNome" placeholder="Nome do usuário">
-                                        </div>
-                                    </div>
-                                    <!-- SOBRENOME-->
-                                    <div class="form-group">
-                                        <label for="inputSobrenome" class="col-lg-2 control-label">Sobrenome</label>
-                                        <div class="col-lg-10">
-                                            <input name="sobrenomeUsuario" type="" class="form-control" id="inputSobrenome" placeholder="Sobrenome">
-                                        </div>
-                                    </div>    
-                                    <!-- cpfUsuario-->
-                                    <div class="form-group">
-                                        <label for="inputCPF" class="col-lg-2 control-label">CPF</label>
-                                        <div class="col-lg-10">
-                                            <input name="cpfUsuario" type="" class="form-control" id="" placeholder="CPF">
-                                        </div>
-                                    </div> 
-                                        {{> cadastroEndereco}}   
-                                    <!-- - - - - - - - - - - - - - - - - - - - - - -  - -->                                 
-                                    
-                                    <div class="form-group">
-                                        <div class="col-lg-10 col-lg-offset-2">
-                                            <button class="btn btn-default">Cancel</button>
-                                            <button type="submit" class="btn btn-primary">Submit</button>
-                                        </div>
-                                    </div>
-                                </fieldset>
-                            </form>
-                        <div id="source-button" class="btn btn-primary btn-xs" style="display: none;">&lt; &gt;</div>
-                    </div>
+            <div class="col-lg-6 ajuste">
+                <div class="well well-lg">
+                    <form class="form-horizontal">
+                        <fieldset>
+                            <legend>Cadastro de Usuário</legend>
+                            <!-- NOME USUARIO-->
+                            <div class="form-group">
+                                <label for="inputNome" class="col-lg-2 control-label">Nome</label>
+                                <div class="col-lg-10">
+                                    <input name="nomeUsuario" type="" class="form-control" id="inputNome" placeholder="Nome do usuário">
+                                </div>
+                            </div>
+                            <!-- SOBRENOME-->
+                            <div class="form-group">
+                                <label for="inputSobrenome" class="col-lg-2 control-label">Sobrenome</label>
+                                <div class="col-lg-10">
+                                    <input name="sobrenomeUsuario" type="" class="form-control" id="inputSobrenome" placeholder="Sobrenome">
+                                </div>
+                            </div>
+                            <!-- cpfUsuario-->
+                            <div class="form-group">
+                                <label for="inputCPF" class="col-lg-2 control-label">CPF</label>
+                                <div class="col-lg-10">
+                                    <input name="cpfUsuario" type="" class="form-control" id="" placeholder="CPF">
+                                </div>
+                            </div>{{> cadastroEndereco}}
+                            <!-- - - - - - - - - - - - - - - - - - - - - - - - -->
+                            <div class="form-group">
+                                <div class="col-lg-10 col-lg-offset-2">
+                                    <button class="btn btn-default">Cancel</button>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                    <div id="source-button" class="btn btn-primary btn-xs" style="display: none;">&lt; &gt;</div>
                 </div>
-</div>
-</div>      
-<!--   <form>
+            </div>
+        </div>
+    </div>
+    <!-- <form>
         <input type="text" name="nomeUsuario" placeholder="Nome">
         <input type="text" name="sobrenomeUsuario" placeholder="Sobrenome">    
         <input type="text" name="cpfUsuario" placeholder="CPF">
@@ -57,8 +53,4 @@
 		<input type="text" name="estado" placeholder="Estado">
 		<input type="text" name="pais" placeholder="País">  
         <input type="submit" value="Adicionar">
-    </form> -->
-    {{/if}}
- 
-    
-</template>
+    </form> -->{{/if}}</template>
