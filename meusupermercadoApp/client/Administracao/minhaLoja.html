@@ -1,0 +1,56 @@
+<template name="minhaLoja">
+    <div class="container-fluid">
+        <div class="row">{{> opcoesAdm}}
+            <div class="col-sm-6 col-md-5">
+                <div class="">
+                    <div class="container">
+                        <div class="col-lg-6 ajuste">
+                            <div class="well well-lg">
+                                <form class="form-horizontal">
+                                    <fieldset>
+                                        <legend>Minha Loja</legend>
+                                        <!-- NOME DA LOJA -->
+                                        <div class="form-group">
+                                            <label for="inputName" class="col-lg-2 control-label">Empresa</label>
+                                            <div class="col-lg-10">
+                                                <input name="nomeLoja" type="" class="form-control" id="inputName" placeholder="Nome Fantasia">
+                                            </div>
+                                        </div>
+                                        <!-- CNPJ -->
+                                        <div class="form-group">
+                                            <label for="inputCNPJ" class="col-lg-2 control-label">CNPJ</label>
+                                            <div class="col-lg-10">
+                                                <input name="cnpj" type="" class="form-control" id="inputCNPJ" placeholder="CNPJ">
+                                            </div>
+                                        </div>{{> cadastroEndereco}}
+                                        <!-- Usuario -->
+                                        <div class="form-group">
+                                            <label for="inputUsuario" class="col-lg-2 control-label">Usuário</label>
+                                            <div class="col-lg-10">
+                                                <input name="administrador" type="" class="form-control" id="inputUsuario" placeholder="Usuário">
+                                                <br>
+                                                <div class="togglebutton">
+                                                    <label>
+                                                        <input name="notificacao" type="checkbox">
+                                                        <span class="toggle"></span>Receber notificações</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- - - - - - - - - - - - - - - - - - - - - - - - -->
+                                        <div class="form-group">
+                                            <div class="col-lg-10 col-lg-offset-2">
+                                                <button class="btn btn-default">Cancel</button>
+                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </form>
+                                <div id="source-button" class="btn btn-primary btn-xs" style="display: none;">&lt; &gt;</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

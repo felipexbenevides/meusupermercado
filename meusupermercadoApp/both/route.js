@@ -26,4 +26,29 @@ Router.route('/novoProduto', function(){
 Router.route('/meuPerfil', function(){
   this.render('meuPerfil');
 });
+Router.route('/minhaLoja', function(){
+  this.render('minhaLoja');
+});
+Router.route('/testeHttp', function () {
+  this.render('formTestHttp');
+});
+Router.route('/myform', { where: 'server' })
+  .get(function () {
+    var req = this.request;
+    console.log(req);
+    var response = this.response;
+    console.log(req.query.test);
+    this.response.end('404');
+  })
+  .post(function (data) {
+    var req = this.request;
+    console.log(req.body.test);
+    console.log(data);
+    var response = this.response;
+
+    this.response.end('404');
+  })
+  .put(function () {
+    // PUT /webhooks/stripe
+  })
 

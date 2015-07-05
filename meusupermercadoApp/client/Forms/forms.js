@@ -14,7 +14,6 @@ if (Meteor.isClient) {
             var cidade = event.target.cidade.value;
             var estado = event.target.estado.value;
 
-
             var endereco = { 'cep': cep, 'rua': rua, 'numero': numero, 'complemento': complemento, 'bairro': bairro, 'cidade': cidade, 'estado': estado };
 
             var user = { 'primeiroNome': nomeUsuario, 'sobrenome': sobrenomeUsuario, 'cpf': cpfUsuario, 'endereco': endereco };
@@ -57,6 +56,20 @@ if (Meteor.isClient) {
             //console.log(Meteor.users.findOne({ _id: Meteor.userId() }));
         }
     });
+    
+   Template.layout.helpers({
+      administrador: function(){
+          var loja = Lojas.findOne({'administrador':Meteor.userId()});
+          if(loja != undefined){
+              return true;
+          }
+          else{
+              return false;
+          }
+      } 
+   });
+    
+    
     Template.cadastroProduto.events({
         'submit form': function (event) {
             event.preventDefault();
@@ -75,7 +88,50 @@ if (Meteor.isClient) {
             //db.Produtos.find().forEach( function(myDoc) { console.log(myDoc); } );
         }
     });
+    Template.minhaLoja.onRendered(function(){
+        $('#inputName').val(Lojas.findOne({ administrador: Meteor.userId()}).nome);
+        $('#inputCNPJ').val(Lojas.findOne({ administrador: Meteor.userId()}).cnpj);
+        $("#inputCEP").val(Lojas.findOne({ administrador: Meteor.userId()}).endereco.cep);
+        $("#inputRua").val(Lojas.findOne({ administrador: Meteor.userId()}).endereco.rua);
+        $("#inputNum").val(Lojas.findOne({ administrador: Meteor.userId()}).endereco.numero);
+        $("#inputComp").val(Lojas.findOne({ administrador: Meteor.userId()}).endereco.complemento);
+        $("#inputBairro").val(Lojas.findOne({ administrador: Meteor.userId()}).endereco.bairro);
+        $("#inputCidade").val(Lojas.findOne({ administrador: Meteor.userId()}).endereco.cidade);
+        $("#inputEstado").val(Lojas.findOne({ administrador: Meteor.userId()}).endereco.estado);
+        $('#inputUsuario').attr("disabled",true);
+        });
+        
+    Template.minhaLoja.events({
+        'submit form': function (event) {
+            event.preventDefault();
 
+            var nomeLoja = event.target.nomeLoja.value;
+            var cnpj = event.target.cnpj.value;
+
+            var cep = event.target.inputCEP.value;
+            var rua = event.target.inputRua.value;
+            var numero = event.target.inputNum.value;
+            var complemento = event.target.inputComp.value;
+            var bairro = event.target.inputBairro.value;
+            var cidade = event.target.inputCidade.value;
+            var estado = event.target.inputEstado.value;
+
+            var endereco = { 'rua': rua, 'numero': numero, 'complemento': complemento, 'cep': cep,'bairro': bairro, 'cidade': cidade, 'estado': estado };
+            //console.log(Meteor.users.findOne({ _id: Meteor.userId() }));
+            //var admin = Meteor.users.findOne({ "emails.address": event.target.administrador.value });
+            Lojas.update({ _id: Lojas.findOne({administrador : Meteor.userId()})._id},{$set : { nome: nomeLoja, cnpj: cnpj, endereco: endereco }}, function(error, result){
+                if(error){
+                    console.log(error.invalidKeys)
+                }
+                else{
+                    console.log(result);
+                }
+            });   
+        }
+    }); 
+     
+     
+        
     Template.cadastroLoja.events({
         'submit form': function (event) {
             event.preventDefault();
@@ -83,20 +139,26 @@ if (Meteor.isClient) {
             var nomeLoja = event.target.nomeLoja.value;
             var cnpj = event.target.cnpj.value;
 
-            var rua = event.target.rua.value;
-            var numero = event.target.numero.value;
-            var complemento = event.target.complemento.value;
-            var cep = event.target.cep.value;
-            var cidade = event.target.cidade.value;
-            var estado = event.target.estado.value;
-            var pais = event.target.pais.value;
+            var cep = event.target.inputCEP.value;
+            var rua = event.target.inputRua.value;
+            var numero = event.target.inputNum.value;
+            var complemento = event.target.inputComp.value;
+            var bairro = event.target.inputBairro.value;
+            var cidade = event.target.inputCidade.value;
+            var estado = event.target.inputEstado.value;
 
-            var endereco = { 'rua': rua, 'numero': numero, 'complemento': complemento, 'cep': cep, 'cidade': cidade, 'estado': estado, 'pais': pais };
+            var endereco = { 'rua': rua, 'numero': numero, 'complemento': complemento, 'cep': cep,'bairro': bairro, 'cidade': cidade, 'estado': estado };
             //console.log(Meteor.users.findOne({ _id: Meteor.userId() }));
             var admin = Meteor.users.findOne({ "emails.address": event.target.administrador.value });
 
-            Lojas.insert({ nomeLoja: nomeLoja, cnpj: cnpj, endereco: endereco, admin_id: admin._id });
-            Lojas.find().forEach(function (myDoc) { console.log(myDoc); });
+            console.log(Lojas.insert({ nome: nomeLoja, cnpj: cnpj, endereco: endereco, administrador: admin._id }, function(error, result){
+                if(error){
+                    console.log(error.invalidKeys)
+                }
+                else{
+                    console.log(result);
+                }
+            }));   
         }
     });
     // Template.cadastroUsuario.events({

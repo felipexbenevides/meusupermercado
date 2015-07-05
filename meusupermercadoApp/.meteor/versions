@@ -13,6 +13,7 @@ blaze@2.1.2
 blaze-tools@1.0.3
 boilerplate-generator@1.0.3
 callback-hook@1.0.3
+cfs:http-methods@0.0.29
 check@1.0.5
 coffeescript@1.0.6
 dburles:mongo-collection-instances@0.3.3
@@ -56,6 +57,7 @@ momentjs:moment@2.8.4
 mongo@1.1.0
 mrt:underscore-string-latest@2.3.3
 npm-bcrypt@0.7.8_2
+npm-container@1.0.0
 observe-sequence@1.0.6
 ordered-dict@1.0.3
 random@1.0.3

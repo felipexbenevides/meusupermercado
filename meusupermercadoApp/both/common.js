@@ -193,10 +193,12 @@ Schemas.Lojas = new SimpleSchema({
         optional: false
     },
     estoque: {
-        type: [Schemas.Item]
+        type: [Schemas.Item],
+        optional: true
     },
     vendas: {
-        type: [Schemas.Vendas]
+        type: [Schemas.Vendas],
+        optional: true
     }
 });
 
