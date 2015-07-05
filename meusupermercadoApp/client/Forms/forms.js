@@ -156,7 +156,29 @@ if (Meteor.isClient) {
     // });
 
     Template.cadastroEndereco.events({
+<<<<<<< HEAD
         'blur #inputCEP': function (event) {
+=======
+        'blur #inputNum' : function(event){
+        if (Meteor.isServer) {
+            alert('server');
+            console.log('server');
+        }
+        if (Meteor.isClient) {
+            alert('client');
+            console.log('cliente');
+        }        
+
+        // var pagseguro = require('pagseguro'),
+        //         pag = new pagseguro({
+        //             email : 'felipe__eu@hotmail.com',
+        //             token: 'D685D260685C4FB79A7E164DD2300DE1',
+        //             mode : 'sandbox'
+        //         });  
+
+        },
+        'blur #inputCEP' : function(event){
+>>>>>>> 3ea945f88ef712c162517646c52572c7a64898ab
             //$.get( "http://www.fsist.com.br/sms.aspx?tel=87999617721&msg=teste", function( data ) {
             //     $.get( "http://www.webservicex.net/sendsmsworld.asmx/sendSMS?FromEmailAddress=123&CountryCode=+55&MobileNumber=87999617721&Message=string", function( data ) {
             //         $( ".result" ).html( data );
