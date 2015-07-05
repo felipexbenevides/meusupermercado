@@ -84,7 +84,7 @@ if(Meteor.isServer){
             }
         },
         shipping: {
-            type: '',
+            type: '1',
             address: {
                 street: 'rua',
                 number: 'num',
