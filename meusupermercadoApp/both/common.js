@@ -230,7 +230,7 @@ Schemas.Usuarios = new SimpleSchema({
         regEx: /^[a-z A-Z-]{2,25}$/,
         optional: true
     },
-    Sobrenome: {
+    sobrenome: {
         type: String,
         label: "Sobrenome",
         regEx: /^[a-z A-Z-]{2,25}$/,

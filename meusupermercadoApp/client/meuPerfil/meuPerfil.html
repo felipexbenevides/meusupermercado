@@ -1,0 +1,44 @@
+<template name="meuPerfil">{{#if currentUser}}
+    <div class="">
+        <div class="container">
+            <div class="col-lg-8 col-offset-2 ajuste">
+                <div class="well well-lg">
+                    <form class="form-horizontal">
+                        <fieldset>
+                            <legend>Dados do Usuário</legend>
+                            <div class="form-group">
+                                <label for="primeiroNome" class="col-lg-2 control-label">Nome</label>
+                                <div class="col-lg-10">
+                                    <input name="primeiroNome" type="" class="form-control" id="inputName" placeholder="Nome" value={{currentUser.profile.primeiroNome}}>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="sobrenome" class="col-lg-2 control-label">Sobrenome</label>
+                                <div class="col-lg-10">
+                                    <input name="sobrenome" type="" class="form-control" id="inputSobrenome" placeholder="Sobrenome" value={{currentUser.profile.sobrenome}}>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputCpf" class="col-lg-2 control-label">CPF</label>
+                                <div class="col-lg-10">
+                                    <input name="cpf" type="" class="form-control" id="inputCpf" placeholder="CPF" value={{currentUser.profile.cpf}}>
+                                </div>
+                            </div>
+                            
+                        </fieldset>
+                        <fieldset>
+                            <legend>Endereço</legend>
+                            {{> cadastroEndereco}}
+                            <div class="form-group">
+                                <div class="col-lg-10 col-lg-offset-2">
+                                    <button class="btn btn-default">Cancelar</button>
+                                    <button type="submit" class="btn btn-primary">Atualizar</button>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                    <div id="source-button" class="btn btn-primary btn-xs" style="display: none;">&lt; &gt;</div>
+                </div>
+            </div>
+        </div>
+    </div>{{/if}}</template>
