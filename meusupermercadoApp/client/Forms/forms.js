@@ -17,7 +17,7 @@ if (Meteor.isClient) {
 
             var endereco = { 'cep': cep, 'rua': rua, 'numero': numero, 'complemento': complemento, 'bairro': bairro, 'cidade': cidade, 'estado': estado };
 
-            var user = { 'primeiroNome': nomeUsuario, 'sobrenome': sobrenomeUsuario, cpf: 'cpfUsuario', endereco: endereco };
+            var user = { 'primeiroNome': nomeUsuario, 'sobrenome': sobrenomeUsuario, 'cpf': cpfUsuario, 'endereco': endereco };
 
             Meteor.users.update({ _id: Meteor.userId() }, { $set: { profile: user } });
         }
@@ -28,32 +28,33 @@ if (Meteor.isClient) {
         $("#inputRua").val(Meteor.users.findOne({ _id: Meteor.userId()}).profile.endereco.rua);
         $("#inputNum").val(Meteor.users.findOne({ _id: Meteor.userId()}).profile.endereco.numero);
         $("#inputComp").val(Meteor.users.findOne({ _id: Meteor.userId()}).profile.endereco.complemento);
+        $("#inputBairro").val(Meteor.users.findOne({ _id: Meteor.userId()}).profile.endereco.bairro);
         $("#inputCidade").val(Meteor.users.findOne({ _id: Meteor.userId()}).profile.endereco.cidade);
         $("#inputEstado").val(Meteor.users.findOne({ _id: Meteor.userId()}).profile.endereco.estado);
-        $("#inputBairro").val(Meteor.users.findOne({ _id: Meteor.userId()}).profile.endereco.bairro);
     });
     
     Template.meuPerfil.events({
         'submit form': function (event) {
             event.preventDefault();
-            var nomeUsuario = event.target.nomeUsuario.value;
-            var sobrenomeUsuario = event.target.sobrenomeUsuario.value;
-            var cpfUsuario = event.target.cpfUsuario.value;
+            var nomeUsuario = event.target.inputName.value;
+            var sobrenomeUsuario = event.target.inputSobrenome.value;
+            var cpfUsuario = event.target.inputCpf.value;
             
-            var cep = event.target.cep.value;
-            var rua = event.target.rua.value;
-            var numero = event.target.numero.value;
-            var complemento = event.target.complemento.value;
-            var bairro = event.target.bairro.value;
-            var cidade = event.target.cidade.value;
-            var estado = event.target.estado.value;
+            var cep = event.target.inputCEP.value;
+            var rua = event.target.inputRua.value;
+            var numero = event.target.inputNum.value;
+            var complemento = event.target.inputComp.value;
+            var bairro = event.target.inputBairro.value;
+            var cidade = event.target.inputCidade.value;
+            var estado = event.target.inputEstado.value;
 
 
             var endereco = { 'cep': cep, 'rua': rua, 'numero': numero, 'complemento': complemento, 'bairro': bairro, 'cidade': cidade, 'estado': estado };
 
-            var user = { 'primeiroNome': nomeUsuario, 'sobrenome': sobrenomeUsuario, cpf: 'cpfUsuario', endereco: endereco };
+            var user = { 'primeiroNome': nomeUsuario, 'sobrenome': sobrenomeUsuario, 'cpf': cpfUsuario, 'endereco': endereco };
 
             Meteor.users.update({ _id: Meteor.userId() }, { $set: { profile: user } });
+            //console.log(Meteor.users.findOne({ _id: Meteor.userId() }));
         }
     });
     Template.cadastroProduto.events({
@@ -73,7 +74,6 @@ if (Meteor.isClient) {
             Produtos.insert({ nomeProduto: nomeProduto, descricaoProduto: descricaoProduto, peso: peso, grupo: grupo, subgrupo: subgrupo, valorEnergetico: valorEnergetico, carboidratos: carboidratos, sodio: sodio, criadoEm: new Date(), atualizadoEm: new Date() });
             //db.Produtos.find().forEach( function(myDoc) { console.log(myDoc); } );
         }
-
     });
 
     Template.cadastroLoja.events({
@@ -156,25 +156,6 @@ if (Meteor.isClient) {
     // });
 
     Template.cadastroEndereco.events({
-        'blur #inputCEP': function (event) {
-        'blur #inputNum' : function(event){
-        if (Meteor.isServer) {
-            alert('server');
-            console.log('server');
-        }
-        if (Meteor.isClient) {
-            alert('client');
-            console.log('cliente');
-        }        
-
-        // var pagseguro = require('pagseguro'),
-        //         pag = new pagseguro({
-        //             email : 'felipe__eu@hotmail.com',
-        //             token: 'D685D260685C4FB79A7E164DD2300DE1',
-        //             mode : 'sandbox'
-        //         });  
-
-        },
         'blur #inputCEP' : function(event){
             //$.get( "http://www.fsist.com.br/sms.aspx?tel=87999617721&msg=teste", function( data ) {
             //     $.get( "http://www.webservicex.net/sendsmsworld.asmx/sendSMS?FromEmailAddress=123&CountryCode=+55&MobileNumber=87999617721&Message=string", function( data ) {
