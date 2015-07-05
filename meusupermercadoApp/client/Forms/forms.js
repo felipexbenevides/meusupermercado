@@ -202,7 +202,6 @@ if (Meteor.isClient) {
                     $("#inputCidade").attr('placeholder', 'Cidade');
                     $("#inputEstado").attr('placeholder', 'Estado');
                 }
->>>>>>> origin/master
             }
             if (cep != "" && validacep.test(cep)) {
                 setEndereco('Carregando dados remotos...');
