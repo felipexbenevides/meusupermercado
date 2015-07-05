@@ -169,6 +169,19 @@ if (Meteor.isClient) {
                 $("#inputComp").val('');
                 $("#inputCidade").val('');
                 $("#inputEstado").val('');
+                $("#inputBairro").val('');                
+                $("#inputRua").attr('placeholder',msg);
+                $("#inputComp").attr('placeholder',msg);
+                $("#inputCidade").attr('placeholder',msg);
+                $("#inputEstado").attr('placeholder',msg);
+                $("#inputBairro").attr('placeholder',msg);
+                if(msg == 'orig'){
+                    $("#inputRua").attr('placeholder','Rua');
+                    $("#inputComp").attr('placeholder','Complemento');
+                    $("#inputCidade").attr('placeholder','Cidade');
+                    $("#inputEstado").attr('placeholder','Estado');
+                    $("#inputBairro").attr('placeholder','Bairro');
+                }           
                 $("#inputRua").attr('placeholder', msg);
                 $("#inputComp").attr('placeholder', msg);
                 $("#inputCidade").attr('placeholder', msg);
@@ -202,6 +215,9 @@ if (Meteor.isClient) {
                             if (i == "uf") {
                                 $("#inputEstado").val(field);
                             }
+                            if(i == "bairro"){
+                                $("#inputBairro").val(field);
+                            }                            
                         });
                     } else {
                         alert("CEP não encontrado. Verifique a corretude dos dados informados!");
