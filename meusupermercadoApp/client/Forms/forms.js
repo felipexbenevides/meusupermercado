@@ -122,16 +122,7 @@ if (Meteor.isClient) {
 
     Template.cadastroEndereco.events({
         'blur #inputNum' : function(event){
-        if (Meteor.isServer) {
-            alert('server');
-            console.log('server');
-        }
-        if (Meteor.isClient) {
-            alert('client');
-            console.log('cliente');
-        }        
-
-        // var pagseguro = require('pagseguro'),
+         // var pagseguro = require('pagseguro'),
         //         pag = new pagseguro({
         //             email : 'felipe__eu@hotmail.com',
         //             token: 'D685D260685C4FB79A7E164DD2300DE1',
@@ -152,15 +143,18 @@ if (Meteor.isClient) {
                 $("#inputComp").val('');
                 $("#inputCidade").val('');
                 $("#inputEstado").val('');
+                $("#inputBairro").val('');                
                 $("#inputRua").attr('placeholder',msg);
                 $("#inputComp").attr('placeholder',msg);
                 $("#inputCidade").attr('placeholder',msg);
                 $("#inputEstado").attr('placeholder',msg);
+                $("#inputBairro").attr('placeholder',msg);
                 if(msg == 'orig'){
                     $("#inputRua").attr('placeholder','Rua');
                     $("#inputComp").attr('placeholder','Complemento');
                     $("#inputCidade").attr('placeholder','Cidade');
                     $("#inputEstado").attr('placeholder','Estado');
+                    $("#inputBairro").attr('placeholder','Bairro');
                 }           
             }
             if(cep != "" && validacep.test(cep)){
@@ -185,6 +179,9 @@ if (Meteor.isClient) {
                             if(i == "uf"){
                                 $("#inputEstado").val(field);
                             }
+                            if(i == "bairro"){
+                                $("#inputBairro").val(field);
+                            }                            
                         });
                     }else{
                         alert("CEP não encontrado. Verifique a corretude dos dados informados!");
