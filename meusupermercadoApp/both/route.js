@@ -5,7 +5,7 @@ Router.configure({
 Router.route('/', function () {
   this.render('home');
 });
-Router.route('/Ofertas', function () {
+Router.route('/ofertas', function () {
   this.render('ofertas');
 });
 Router.route('/form', function () {
@@ -32,12 +32,6 @@ Router.route('/minhaLoja', function(){
 Router.route('/testeHttp', function () {
   this.render('formTestHttp');
 });
-/*
-Transitioner.default({
-  in: 'transition.fadeIn',
-  out: 'transition.fadeOut'
-});
-*/
 Router.route('/myform', { where: 'server' })
   .get(function () {
     var req = this.request;
