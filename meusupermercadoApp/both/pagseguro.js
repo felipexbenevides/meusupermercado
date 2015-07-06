@@ -50,37 +50,36 @@
 //     	console.log('-------------------------------------');        
 // }
 if(Meteor.isServer){
+function pag(){
     xml = Meteor.npmRequire('jstoxml');
     req = Meteor.npmRequire('request');
     
     k = xml.toXML({
-      // a: {
-      //   foo: 'bar',
-      //   foo2: 'bar2'
-      // },
-      // b: {
-      //   foo: 'bar',
-      //   foo2: 'bar2'
-      // }
       checkout:{
         currency: 'BRL',
         items: [
             {item: {
-                nome: 'nome1',
-                preco: 'preco1'
+            id: '0002',  
+            description: 'Notebook Prata',
+            amount: '24300.00',
+            quantity: '1',  
+            weight: '1000'
             }},
             {item: {
-                nome: 'nome2',
-                preco: 'preco2'
+            id: '0001',  
+            description: 'Notebook Prata',
+            amount: '24300.00',
+            quantity: '1',  
+            weight: '1000'
             }}
         ],
-        reference: 'idvenda',
+        reference: 'REF1234',
         sender: {
-            name: 'Comprador',
-            email: 'email',
+            name: 'José Comprador',
+            email: 'comprador@uol.com.br',
             phone: {
-                areacode: 'ddd',
-                number: 'numero'
+                areacode: '11',
+                number: '56273440'
             }
         },
         shipping: {
@@ -92,13 +91,117 @@ if(Meteor.isServer){
                 district: 'estado',
                 postalcode: 'cep',
                 city: 'cidade',
-                state: 'estado',
+                state: 'SP',
                 country: 'pais'
             }
         }
       }
     }, {header: true, indent: '  '});
     console.log(k); 
-
+    var options;
+    options = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/xml; charset=UTF-8'
+        }
+    };
+    options.uri = "https://ws.sandbox.pagseguro.uol.com.br/v2/checkout?email=felipe__eu@hotmail.com&token=2C05E090F0BA414A93D16F01725E693C";
+    options.body = k;
+    req(options, function(err, res, body) {
+        if (err) {
+           // return callback(err);
+        } else {
+            console.log(body);
+            //return callback(null, body);
+        }
+    });    
+}
+function PagSeguro(email, token){
+    this.email = email;
+    this.token = token;
+    this.xml = Meteor.npmRequire('jstoxml');
+    this.req = Meteor.npmRequire('request');
+    this.obj = {};
+    this.options= {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/xml; charset=UTF-8'
+        }
+    };
+    this.setXML = function (body) {
+        this.reqxml = this.xml.toXML(body,{header: true, indent: '  '});    
+  
+    }
+    this.send = function(){
+    this.options.uri = "https://ws.sandbox.pagseguro.uol.com.br/v2/checkout?email="+ this.email +"&token="+this.token;
+    this.options.body = this.reqxml;
+    console.log(this.options.body);
+    this.req(this.options, function(err, res, body) {
+        if (err) {
+           // return callback(err);
+        } else {
+            console.log(body);
+            //return callback(null, body);
+        }
+    })
+    };
 
 }
+var x ={     
+    checkout:{
+        currency: 'BRL',
+        items: [
+            {item: {
+            id: '0002',  
+            description: 'Notebook Prata',
+            amount: '24300.00',
+            quantity: '1',  
+            weight: '1000'
+            }},
+            {item: {
+            id: '0001',  
+            description: 'Notebook Prata',
+            amount: '24300.00',
+            quantity: '1',  
+            weight: '1000'
+            }}
+        ],
+        reference: 'REF1234',
+        sender: {
+            name: 'José Comprador',
+            email: 'comprador@uol.com.br',
+            phone: {
+                areacode: '11',
+                number: '56273440'
+            }
+        },
+        shipping: {
+            type: '1',
+            address: {
+                street: 'rua',
+                number: 'num',
+                complement: 'complemento',
+                district: 'estado',
+                postalcode: 'cep',
+                city: 'cidade',
+                state: 'SP',
+                country: 'pais'
+            }
+        }
+    }
+}
+console.log('--------------------------------------------'+x);
+
+PagSeguro = new PagSeguro('felipe__eu@hotmail.com', '2C05E090F0BA414A93D16F01725E693C');
+PagSeguro.setXML(x);
+PagSeguro.send();
+//console.log(PagSeguro.options.body);
+//console.log(PagSeguro);
+
+}
+
+
+
+
+
+
