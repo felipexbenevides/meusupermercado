@@ -48,9 +48,8 @@ Transitioner.default({
 Router.route('/myform', { where: 'server' })
   .get(function () {
     var req = this.request;
-    console.log(req);
     var response = this.response;
-    console.log(req.query.test);
+    console.log(req);
     this.response.end('404');
   })
   .post(function (data) {

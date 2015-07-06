@@ -19,8 +19,6 @@ joshowens:simple-form
 urigo:angular
 npm-container
 cfs:http-methods
-<<<<<<< HEAD
 ccorcos:transitioner
-=======
 meteorhacks:npm
->>>>>>> 4489ee40af1cb94210a09ad8b519fbe29736e3e1
+
