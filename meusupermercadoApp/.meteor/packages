@@ -17,7 +17,6 @@ aldeed:simple-schema
 fezvrasta:bootstrap-material-design-fullpalette
 joshowens:simple-form
 urigo:angular
-
-
 npm-container
 cfs:http-methods
+ccorcos:transitioner

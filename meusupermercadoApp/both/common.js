@@ -7,7 +7,7 @@ Produtos.remove( { } );
 Lojas.remove({});
 Grupos.remove({});
 */
-
+//Grupos.remove({});
 var removeDatabase = function(){
     Produtos.remove( { } );
     Lojas.remove({});
@@ -57,8 +57,7 @@ Schemas.Endereco = new SimpleSchema({
 Schemas.Grupos = new SimpleSchema({
     nomeGrupo: {
         type: String,
-        label: "Nome do Grupo",
-        unique: true
+        label: "Nome do Grupo"
     }
 });
 
@@ -165,9 +164,17 @@ Schemas.Vendas = new SimpleSchema({
         type: Meteor.users._id,
         optional: false
     },
+    transferenciaId:{
+        type: "$._id",
+        optional: false        
+    },
     formasPagamento:{
         type: [String],
         optional: true
+    },
+    status:{
+        type: String,
+        optional: false
     }
 });
 
@@ -268,7 +275,8 @@ Schemas.Usuarios = new SimpleSchema({
 Schemas.User = new SimpleSchema({
     username: {
         type: String,
-        regEx: /^[a-z0-9A-Z_]{3,15}$/
+        regEx: /^[a-z0-9A-Z_]{3,15}$/,
+        optional: true
     },
     emails: {
         type: [Object],
@@ -321,6 +329,3 @@ Grupos.attachSchema(Schemas.Grupos);
 Produtos.attachSchema(Schemas.Produtos);
 Lojas.attachSchema(Schemas.Lojas);
 Meteor.users.attachSchema(Schemas.User);
-
-
-

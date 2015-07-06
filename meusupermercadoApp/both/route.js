@@ -32,6 +32,12 @@ Router.route('/minhaLoja', function(){
 Router.route('/testeHttp', function () {
   this.render('formTestHttp');
 });
+Router.route('/meusProdutos', function(){
+  this.render('meusProdutos');
+});
+Router.route('/meusItens',function(){
+  this.render('meusItens');
+});
 /*
 Transitioner.default({
   in: 'transition.fadeIn',
