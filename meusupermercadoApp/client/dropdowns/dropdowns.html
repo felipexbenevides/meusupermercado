@@ -1,0 +1,35 @@
+<!-- Sempre envolver num Container e row-->
+<template name="controleEsquerda">
+  <div class="col-sm-3 col-md-2 sidebar">
+    <ul class="nav nav-sidebar">
+      <li>
+        <select id="selecionarLoja">{{> lojaOpcoes}}</select>
+      </li>
+    </ul>
+  </div>
+</template>
+<template name="lojaOpcoes">
+  {{#each lojas}}
+    <option value={{_id}} {{isSelected}}>{{nome}}</option>
+  {{/each}}
+  </template>
+
+<template name="selecionarGrupo">
+  <select id="selectGrupo">{{> grupoOpcoes}}</select>
+</template>
+
+<template name="grupoOpcoes">
+{{#each grupos}}
+  <option class="{{_id}}" value="{{_id}}">{{nomeGrupo}}</option>
+{{/each}}
+</template>
+
+<template name="selecionarProduto">
+  <select id="selectProduto">{{> produtoOpcoes}}</select>
+</template>
+
+<template name="produtoOpcoes">
+  {{#each produtos}}
+    <option class="{{_id}}" value="{{_id}}">{{nome}}</option>
+  {{/each}}
+</template>

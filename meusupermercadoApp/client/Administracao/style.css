@@ -1,0 +1,17 @@
+#floating-action-button .btn {
+    margin: 20px;
+  }
+  #floating-action-button h2 {
+    padding: 14px;
+    margin: 0;
+    font-size: 16px;
+    font-weight: 400;
+  }
+
+.modal.modal-wide .modal-dialog {
+  width: 70%;
+}
+
+.btn-editar{
+	margin-top: 0px;
+}

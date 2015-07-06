@@ -1,84 +1,14 @@
-<template name="cadastroProduto">
+<template name="cadastroProdutoTela">
     <div class="">
         <div class="container">
-
-            <div class="col-lg-6 ajuste">
-            <div class="well well-lg">                     
-                            <form class="form-horizontal">
-                                <fieldset>
-                                    <legend>Cadastro de Produto</legend>
-                                    <!-- NOME DO PRODUTO-->
-                                    <div class="form-group">
-                                        <label for="inputNome" class="col-lg-2 control-label">Nome</label>
-                                        <div class="col-lg-10">
-                                            <input name="nomeProduto" type="" class="form-control" id="inputNome" placeholder="Nome do produto">
-                                        </div>
-                                    </div>
-                                    <!-- DESCRICAO -->
-                                    <div class="form-group">
-                                        <label for="inputDescricao" class="col-lg-2 control-label">Descrição</label>
-                                        <div class="col-lg-10">
-                                            <input name="descricaoProduto" type="" class="form-control" id="inputDescricao" placeholder="Descrição">
-                                        </div>
-                                    </div>   
-                                    <!-- PESO -->
-                                    <div class="form-group">
-                                        <label for="inputPeso" class="col-lg-2 control-label">Peso</label>
-                                        <div class="col-lg-10">
-                                            <input name="peso" type="" class="form-control" id="inputPeso" placeholder="Peso">
-                                        </div>
-                                    </div> 
-                                    <!-- GRUPO -->  
-                                    <div class="form-group">
-                                        <label for="inputGrupo" class="col-lg-2 control-label">Grupo</label>
-                                        <div class="col-lg-10">
-                                            <input name="grupo" type="" class="form-control" id="inputGrupo" placeholder="Grupo">
-                                        </div>
-                                    </div> 
-                                    <!-- SUBGRUPO -->
-                                    <div class="form-group">
-                                        <label for="inputSubgrupo" class="col-lg-2 control-label">Subgrupo</label>
-                                        <div class="col-lg-10">
-                                            <input name="subgrupo" type="" class="form-control" id="inputSubgrupo" placeholder="Subgrupo">
-                                        </div>
-                                    </div> 
-                                    <!-- VALOR ENERGETICO -->
-                                    <div class="form-group">
-                                        <label for="inputValor" class="col-lg-2 control-label">V.Energ.</label>
-                                        <div class="col-lg-10">
-                                            <input name="valorEnergetico" type="" class="form-control" id="inputValor" placeholder="Valor energético">
-                                        </div>
-                                    </div> 
-                                    <!-- CARBOIDRATOS -->
-                                    <div class="form-group">
-                                        <label for="inputCarboidratos" class="col-lg-2 control-label">Carb.</label>
-                                        <div class="col-lg-10">
-                                            <input name="carboidratos" type="" class="form-control" id="inputCidade" placeholder="Carboidratos">
-                                        </div>
-                                    </div> 
-                                    <!-- SODIO -->
-                                    <div class="form-group">
-                                        <label for="inputsodio" class="col-lg-2 control-label">Sódio</label>
-                                        <div class="col-lg-10">
-                                            <input name="sodio" type="" class="form-control" id="inputsodio" placeholder="Sódio">
-                                        </div>
-                                    </div> 
-                                             
-                                    <!-- - - - - - - - - - - - - - - - - - - - - - -  - -->                                 
-                                    
-                                    <div class="form-group">
-                                        <div class="col-lg-10 col-lg-offset-2">
-                                            <button class="btn btn-default">Cancel</button>
-                                            <button type="submit" class="btn btn-primary">Submit</button>
-                                        </div>
-                                    </div>
-                                </fieldset>
-                            </form>
-                        <div id="source-button" class="btn btn-primary btn-xs" style="display: none;">&lt; &gt;</div>
-                    </div>
+            <div class="col-lg-10 ajuste">
+                <div class="well well-lg">
+                    {{> cadastroProduto}}
+                    <div id="source-button" class="btn btn-primary btn-xs" style="display: none;">&lt; &gt;</div>
                 </div>
-</div>
-</div>    
+            </div>
+        </div>
+    </div>    
 <!--   <form>
     <input type="text" name="nomeProduto" placeholder="Nome do Produto">
     <input type="text" name="descricaoProduto" placeholder="Descricao">
@@ -91,4 +21,123 @@
       
     <input type="submit" value="Adicionar">
   </form> -->
+</template>
+
+
+<template name="cadastroProduto">                     
+    <form class="form-horizontal">
+        <fieldset> 
+            <!-- NOME DO PRODUTO-->
+            <div class="form-group">
+                <label for="inputNome" class="col-lg-2 control-label">Nome</label>
+                <div class="col-lg-10">
+                    <input name="inputNomeProduto" type="" class="form-control" id="inputNomeProduto" placeholder="Nome do produto">
+                </div>
+            </div>
+            <!-- DESCRICAO -->
+            <div class="form-group">
+                <label for="inputDescricao" class="col-lg-2 control-label">Descrição</label>
+                <div class="col-lg-10">
+                    <input name="inputDescricaoProduto" type="" class="form-control" id="inputDescricaoProduto" placeholder="Descrição">
+                </div>
+            </div>   
+            <!-- PESO -->
+            <div class="form-group">
+                <label for="inputPeso" class="col-lg-2 control-label">Peso</label>
+                <div class="col-lg-10">
+                    <input name="inputPeso" type="" class="form-control" id="inputPesoProduto" placeholder="Peso">
+                </div>
+            </div> 
+            <!-- GRUPO -->  
+            <div class="form-group">
+
+                <label for="inputGrupo" class="col-lg-2 control-label">Grupo</label>
+                <div class="col-lg-10">
+                    {{> selecionarGrupo}}
+                </div>
+            </div> 
+            <!-- VALOR ENERGETICO -->
+            <div class="form-group">
+                <label for="inputValor" class="col-lg-2 control-label">Informação Nutricional</label>
+                <div class="col-lg-10">
+                    <input name="inputValorEnergetico" type="" class="form-control" id="inputValorProduto" placeholder="Valor energético">
+                </div>
+            </div> 
+            <!-- Marca -->
+            <div class="form-group">
+                <label for="inputValor" class="col-lg-2 control-label">Marca</label>
+                <div class="col-lg-10">
+                    <input name="inputMarcaProduto" type="" class="form-control" id="inputMarcaProduto" placeholder="Marca">
+                </div>
+            </div>
+                     
+            <!-- - - - - - - - - - - - - - - - - - - - - - -  - -->                                 
+            
+            <div class="form-group">
+                <div class="col-lg-10 col-lg-offset-2">
+                    <button type="cancel" class="btn btn-default" data-dismiss="modal" aria-label="Close">Cancel</button>
+                    <button type="submit" class="btn btn-primary" >Cadastrar</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</template>
+
+<template name="atualizarProduto">                     
+    <form class="form-horizontal">
+        <fieldset> 
+            <!-- NOME DO PRODUTO-->
+            <div class="form-group">
+                <label for="inputNome" class="col-lg-2 control-label">Nome</label>
+                <div class="col-lg-10">
+                    <input name="inputNomeProduto" type="" class="form-control" id="inputAttNomeProduto" placeholder="Nome do produto">
+                </div>
+            </div>
+            <!-- DESCRICAO -->
+            <div class="form-group">
+                <label for="inputDescricao" class="col-lg-2 control-label">Descrição</label>
+                <div class="col-lg-10">
+                    <input name="inputDescricaoProduto" type="" class="form-control" id="inputAttDescricaoProduto" placeholder="Descrição">
+                </div>
+            </div>   
+            <!-- PESO -->
+            <div class="form-group">
+                <label for="inputPeso" class="col-lg-2 control-label">Peso</label>
+                <div class="col-lg-10">
+                    <input name="inputPeso" type="" class="form-control" id="inputAttPesoProduto" placeholder="Peso">
+                </div>
+            </div> 
+            <!-- GRUPO -->  
+            <div class="form-group">
+
+                <label for="inputGrupo" class="col-lg-2 control-label">Grupo</label>
+                <div class="col-lg-10">
+                    {{> selecionarGrupo}}
+                </div>
+            </div> 
+            <!-- VALOR ENERGETICO -->
+            <div class="form-group">
+                <label for="inputValor" class="col-lg-2 control-label">Informação Nutricional</label>
+                <div class="col-lg-10">
+                    <input name="inputValorEnergetico" type="" class="form-control" id="inputAttValorProduto" placeholder="Valor energético">
+                </div>
+            </div> 
+            <!-- Marca -->
+            <div class="form-group">
+                <label for="inputValor" class="col-lg-2 control-label">Marca</label>
+                <div class="col-lg-10">
+                    <input name="inputMarcaProduto" type="" class="form-control" id="inputAttMarcaProduto" placeholder="Marca">
+                </div>
+            </div>
+                     
+            <!-- - - - - - - - - - - - - - - - - - - - - - -  - -->                                 
+            
+            <div class="form-group">
+                <div class="col-lg-10 col-lg-offset-2">
+                    <button type="cancel" class="btn btn-default" data-dismiss="modal" aria-label="Close">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Atualizar</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
 </template>

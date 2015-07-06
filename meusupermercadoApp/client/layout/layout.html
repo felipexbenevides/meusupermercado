@@ -1,141 +1,65 @@
 <template name="layout">
-    <div class="navbar navbar-material-grey-800" role="navigation">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="/"><img src="img/logoS.png" alt="Brand"/></a>
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-        </div>
-        <div class="navbar-collapse collapse navbar-material-grey-800">
-            <ul class="nav navbar-nav">
-                <li class="">
-                    <a href="#">Receitas</a>
-                </li>
-                <li class="">
-                    <a href="#">Listas Prontas</a>
-                </li>
-                <li class="">
-                    <a href="#">Promoções</a>
-                </li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right navbar-material-grey-800">
-                {{> loginButtons}}
-                {{#if currentUser}}
-                <ul class="nav navbar-nav">
-                    <div class="dropdown">
-                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false"><span class="glyphicon glyphicon-cog engine-light-grey"></span>
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                            <li>
-                                <a href="{{pathFor 'meuPerfil'}}">Meu Perfil</a>
-                            </li>
-                            {{#if administrador}}
-                            <li>
-                                <a href="{{pathFor 'minhaLoja'}}">Minha Loja</a>
-                            </li>
-                            {{/if}}
-                        </ul>
-                    </div>     
-                </ul>
-                 {{/if}} 
-            </ul>
-        </div>
+<div class="navbar navbar-material-grey-800" role="navigation">
+    <div class="navbar-header">
+        <a class="navbar-brand" href="/"><img src="img/logoS.png" alt="Brand"/></a>
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
     </div>
-    <div>
-        <div class="collapse navbar-collapse">
-            <ul class="nav nav-pills">
-                <li role="presentation" class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                  Todos os produtos <span class="caret"></span>
-                </a>
-                    <ul class="dropdown-menu">
-                        <li role="presentation">
-                            <a href="{{pathFor 'ofertas'}}">Ofertas</a>
-                        </li>
-                        <li role="presentation">
-                            <a href="#">Cereais</a>
-                        </li>
-                        <li role="presentation">
-                            <a href="#">Carnes</a>
-                        </li>
-                        <li role="presentation">
-                            <a href="#">Peixes</a>
-                        </li>
-                        <li role="presentation">
-                            <a href="#">Laticineos</a>
-                        </li>
-                        <li role="presentation">
-                            <a href="#">Biscoitos</a>
-                        </li>
-                        <li role="presentation">
-                            <a href="#">Bebidas</a>
-                        </li>
-                        <li role="presentation">
-                            <a href="#">Massas</a>
-                        </li>
-                        <li role="presentation">
-                            <a href="#">Molhos</a>
-                        </li>
-                        <li role="presentation">
-                            <a href="#">Higiene</a>
-                        </li>
-                        <li role="presentation">
-                            <a href="#">Material de limpeza</a>
-                        </li>
-                        <li role="presentation">
-                            <a href="#">Padaria</a>
-                        </li>
-                        <li role="presentation">
-                            <a href="#">Doces</a>
-                        </li>
+    <div class="navbar-collapse collapse navbar-material-grey-800">
+        <ul class="nav navbar-nav">
+            <li class="">
+                <a href="#">Receitas</a>
+            </li>
+            <li class="">
+                <a href="#">Listas Prontas</a>
+            </li>
+            <li class="">
+                <a href="#">Promoções</a>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right navbar-material-grey-800">{{> loginButtons}} {{#if currentUser}}
+            <ul class="nav navbar-nav">
+                <div class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                        <span class="glyphicon glyphicon-cog engine-light-grey"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                        <li>
+                            <a href="{{pathFor 'meuPerfil'}}">Meu Perfil</a>
+                        </li>{{#if administrador}}
+                        <li>
+                            <a href="{{pathFor 'minhaLoja'}}">Minha Loja</a>
+                        </li>{{/if}}
                     </ul>
-                </li>
-                <li role="presentation">
-                    <a href="/ofertas">Ofertas</a>
-                </li>
-                <li role="presentation">
-                    <a href="#">Cereais</a>
-                </li>
-                <li role="presentation">
-                    <a href="#">Carnes</a>
-                </li>
-                <li role="presentation">
-                    <a href="#">Peixes</a>
-                </li>
-                <li role="presentation">
-                    <a href="#">Laticineos</a>
-                </li>
-                <li role="presentation">
-                    <a href="#">Frios</a>
-                </li>
-                <li role="presentation">
-                    <a href="#">Biscoitos</a>
-                </li>
-                <li role="presentation">
-                    <a href="#">Bebidas</a>
-                </li>
-                <li role="presentation">
-                    <a href="#">Massas</a>
-                </li>
-                <li role="presentation">
-                    <a href="#">Molhos</a>
-                </li>
-                <li role="presentation">
-                    <a href="#">Higiene</a>
-                </li>
-                <li role="presentation">
-                    <a href="#">Limpeza</a>
-                </li>
-                <li role="presentation">
-                    <a href="#">Padaria</a>
-                </li>
-                <li role="presentation">
-                    <a href="#">Doces</a>
-                </li>
-            </ul>
-        </div>
-    </div>{{> yield}}</template>
+                </div>
+            </ul>{{/if}}</ul>
+    </div>
+</div>
+<div>
+    <div class="collapse navbar-collapse">
+        <ul class="nav nav-pills">
+            <li role="presentation" class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+              Todos os produtos <span class="caret"></span>
+            </a>
+                <ul class="dropdown-menu">
+                    {{#each grupos}}
+                    <li role="presentation">
+                        <a href="/{{nomeGrupo}}">{{nomeGrupo}}</a>
+                    </li>
+                    {{/each}}
+                </ul>
+            </li>
+            {{#each grupos}}
+            <li role="presentation">
+                <a href="{{pathFor nomeGrupo}}">{{nomeGrupo}}</a>
+            </li>
+            {{/each}}
+        </ul>
+    </div>
+</div>{{> yield}}</template>

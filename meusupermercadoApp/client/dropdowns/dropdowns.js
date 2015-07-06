@@ -13,4 +13,16 @@ if (Meteor.isClient) {
 			Session.set("lojaSelecionada",event.currentTarget.value);
 		}
 	};
+	Template.grupoOpcoes.helpers({
+		grupos:function () {
+	    	console.log(Grupos.find().fetch());
+      		return Grupos.find().fetch();
+    	}		
+	});
+
+	Template.produtoOpcoes.helpers({
+		produtos:function(){
+			return Produtos.find().fetch();
+		}
+	});
 }
