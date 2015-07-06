@@ -5,7 +5,7 @@ Router.configure({
 Router.route('/', function () {
   this.render('home');
 });
-Router.route('/Ofertas', function () {
+Router.route('/ofertas', function () {
   this.render('ofertas');
 });
 Router.route('/form', function () {
@@ -32,6 +32,7 @@ Router.route('/minhaLoja', function(){
 Router.route('/testeHttp', function () {
   this.render('formTestHttp');
 });
+
 Router.route('/meusProdutos', function(){
   this.render('meusProdutos');
 });
