@@ -1,24 +1,27 @@
 .panel-body {
-  padding: 1px 0 15px 0;
-	font-family: Calibri;  
+  padding: 0px 0 0px 0;
+	font-family: sans-serif;  
+}
+.form-control{
+	text-align: center;
 }
 .panel-heading{
-	font-family:Hobo Std;
+	font-family:sans-serif;
 }
 .value1{
 	font-size: 14px;
-	color: #b71c1c;
+	/*color: #b71c1c;*/
 }
 .value2{
 	font-size: 22px;
-	color: #b71c1c;	
+	/*color: #b71c1c;	*/
 }
 .value3{
-	font-size: 17px;	
-	color: #b71c1c;
+	font-size: 20px;	
+	/*color: #b71c1c;*/
 }
 .value3, .value2, .value1{
-	font-family: Calibri;
+	font-family: sans-serif;
 }
 .container .row{
     display: block;
@@ -34,4 +37,17 @@
     /*display: block;*/
     text-align: justify;
  
+}
+.form-group-prod{
+	margin:0;
+}
+.basketRemove, .basketAdd{
+
+}
+.basketAdd{
+	color: #008B8B;
+}
+.basketRemove{
+	color:#800000;
+
 }
