@@ -1,0 +1,90 @@
+<template name="meusItens">
+<div class="container-fluid">
+        <div class="row">{{> opcoesAdm}}
+            <div class="col-sm-10 col-md-10">
+                <div class="">
+                    <div class="container">
+                        <div class="col-lg-12 ajuste-top">
+                            <div class="well well-lg">
+                                <h2 class="sub-header">Estoque</h2>
+						          <div class="table-responsive">
+						            <table class="table table-striped">
+						              <thead>
+						                <tr>
+						                  <th>Nome</th>
+						                  <th>Descrição</th>
+						                  <th>Peso</th>
+						                  <th>Informação Nutricional</th>
+						                  <th>Marca</th>
+						                  <th>Preço</th>
+						                  <th>Desconto</th>
+						                  <th>Grupo</th>
+						                  <th>Quantidade</th>
+						                  <th>Código</th>
+						                  <th>Editar</th>
+						                </tr>
+						              </thead>
+						              <tbody>
+						              {{#each itens}}
+						                <tr>
+						                  <td>{{nome}}</td>
+						                  <td>{{descricao}}</td>
+						                  <td>{{peso}}</td>
+						                  <td>{{infoNutricional}}</td>
+						                  <td>{{marca}}</td>
+						                  <td>{{preco}}</td>
+						                  <td>{{desconto}}</td>
+						                  <td>{{grupo}}</td>
+						                  <td>{{quantidade}}</td>
+						                  <td>{{_idItem}}</td>
+						                  <td><button data-toggle="modal" data-target="#modalAtualizarItem" value="{{_idItem}}" class="btn btn-primary btn-editar-item">Editar</button></td>
+						                </tr>
+						              {{/each}}
+						              </tbody>
+						            </table>
+						          </div>
+					          	<div class="row">
+					          		<div class="col-lg-2 col-lg-offset-10">
+							  			<ul class="float-right"><a data-toggle="modal" data-target="#modalAddItem"><button class="btn btn-fab btn-raised btn-primary float right"><i class="mdi-image-edit"></i></button></a></ul>
+							  		</div>       
+							 	</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal modal-wide fade" id="modalAddItem" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	    <div class="modal-dialog" role="document">
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	            <span aria-hidden="true">&times;</span>
+	          </button>
+	          <h2 class="modal-title">Cadastrar Item</h2>
+	        </div>
+	        <div class="modal-body">{{> cadastroItem}}</div>
+	      </div>
+	    </div>
+	  </div>
+
+	<div class="modal modal-wide fade" id="modalAtualizarItem" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	    <div class="modal-dialog" role="document">
+	      	<div class="modal-content">
+	        	<div class="modal-header">
+	          		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	            	<span aria-hidden="true">&times;</span>
+	          		</button>
+	          		<h2 class="modal-title">Editar Item</h2>
+	        	</div>
+	        	<div class="modal-body">{{> editarItem}}</div>
+	    	</div>
+		</div>
+	</div>
+
+</template>
+
+
+

@@ -1,0 +1,40 @@
+
+<template name="editarItem">                    
+    <form class="form-horizontal">
+        <fieldset> 
+            <div class="form-group">
+                <label for="inputProduto" class="col-lg-2 control-label">Produto</label>
+                <div class="col-lg-10">
+                    {{> selecionarProduto}}
+                </div>
+            </div> 
+            <div class="form-group">
+                <label for="inputPreco" class="col-lg-2 control-label">Preço</label>
+                <div class="col-lg-10">
+                    <input name="inputPrecoItem" type="" class="form-control" id="inputEditarPrecoItem" placeholder="Preço">
+                </div>
+            </div>   
+            <div class="form-group">
+                <label for="inputDescontoItem" class="col-lg-2 control-label">Desconto</label>
+                <div class="col-lg-10">
+                    <input name="inputDescontoItem" type="" class="form-control" id="inputEditarDescontoItem" placeholder="Desconto">
+                </div>
+            </div> 
+            <div class="form-group">
+                <label for="inputQuantidadeItem" class="col-lg-2 control-label">Quantidade</label>
+                <div class="col-lg-10">
+                    <input name="inputQuantidadeItem" type="Number" min='1' class="form-control" id="inputEditarQuantidadeItem" placeholder="1">
+                </div>
+            </div>
+                     
+            <!-- - - - - - - - - - - - - - - - - - - - - - -  - -->                                 
+            
+            <div class="form-group">
+                <div class="col-lg-10 col-lg-offset-2">
+                    <button type="cancel" class="btn btn-default" data-dismiss="modal" aria-label="Close">Cancelar</button>
+                    <button type="submit" class="btn btn-primary" id="btnSubmitEditarItems">Atualizar Estoque</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</template>
