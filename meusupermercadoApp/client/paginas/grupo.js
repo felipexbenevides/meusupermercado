@@ -19,9 +19,11 @@ if (Meteor.isClient) {
 	    	if(Session.get('grupoListado') == undefined){
 	    		Session.set('grupoListado', 'Ofertas');
 	    	}
-	    	prods = Produtos.find({ grupo: Session.get('grupoListado')});
+	    	console.log(Session.get('grupoListado'));
+	    	prods = Produtos.find({ nomeGrupo: Session.get('grupoListado')});
 			loja = Lojas.findOne({_id: Session.get('lojaSelecionada')});
 			ret = [];
+			console.log(prods.fetch());
 			prods.forEach(function(myProd){
 				items = loja.estoque.filter(function(item){return item.produto == myProd._id});
 				console.log('myProd:' + myProd);
@@ -29,7 +31,7 @@ if (Meteor.isClient) {
 					ret.push({nome:myProd.nome, preco: i.preco, codBarras: i.codBarras, infoNutricional : myProd.infoNutricional, quantidade: i.quantidade, _idProduto : myProd._id});
 				}
 			});
-			console.log(ret);
+			
 			return ret;
 		}	
     });
