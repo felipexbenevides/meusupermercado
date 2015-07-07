@@ -7,6 +7,7 @@
 }
 .panel-heading{
 	font-family:sans-serif;
+	color:#333;
 }
 .value1{
 	font-size: 14px;
@@ -50,4 +51,8 @@
 .basketRemove{
 	color:#800000;
 
+}
+.precoProduto{
+	line-height: 3.5;
+	
 }
