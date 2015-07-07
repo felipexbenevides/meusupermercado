@@ -19,7 +19,7 @@ Template.meuPerfil.onRendered(function(){
             digits: true
           },  
           rua:{
-            required: true, rangelength: [4, 25]
+            required: true, rangelength: [4, 35]
           },  
           numero:{
             required: true,

@@ -25,7 +25,7 @@
 
 
 <template name="cadastroProduto">                     
-    <form class="form-horizontal">
+    <form id="cadastroProdutoForm" class="form-horizontal">
         <fieldset> 
             <!-- NOME DO PRODUTO-->
             <div class="form-group">
@@ -45,7 +45,7 @@
             <div class="form-group">
                 <label for="inputPeso" class="col-lg-2 control-label">Peso</label>
                 <div class="col-lg-10">
-                    <input name="inputPeso" type="text" class="form-control" id="inputPesoProduto" placeholder="Peso">
+                    <input name="inputPeso" type="text" class="form-control" id="inputPesoProduto" placeholder="Peso ou quantidade. Ex.: 100mL, 1Kg ou 3UN">
                 </div>
             </div> 
             <!-- GRUPO -->  
@@ -84,39 +84,27 @@
 </template>
 
 <template name="atualizarProduto">                     
-    <form class="form-horizontal">
+    <form id="atualizarProdutoForm" class="form-horizontal">
         <fieldset> 
             <!-- NOME DO PRODUTO-->
             <div class="form-group">
                 <label for="inputNome" class="col-lg-2 control-label">Nome</label>
                 <div class="col-lg-10">
-<<<<<<< HEAD
-                    <input name="inputAttNomeProduto" type="" class="form-control" id="inputAttNomeProduto" placeholder="Nome do produto">
-=======
                     <input name="inputNomeProduto" type="text" class="form-control" id="inputAttNomeProduto" placeholder="Nome do produto">
->>>>>>> 8c190d660f99dc9780aacfa24edc2fe1ff83be8c
                 </div>
             </div>
             <!-- DESCRICAO -->
             <div class="form-group">
                 <label for="inputDescricao" class="col-lg-2 control-label">Descrição</label>
                 <div class="col-lg-10">
-<<<<<<< HEAD
-                    <input name="inputAttDescricaoProduto" type="" class="form-control" id="inputAttDescricaoProduto" placeholder="Descrição">
-=======
                     <input name="inputDescricaoProduto" type="text" class="form-control" id="inputAttDescricaoProduto" placeholder="Descrição">
->>>>>>> 8c190d660f99dc9780aacfa24edc2fe1ff83be8c
                 </div>
             </div>   
             <!-- PESO -->
             <div class="form-group">
                 <label for="inputPeso" class="col-lg-2 control-label">Peso</label>
                 <div class="col-lg-10">
-<<<<<<< HEAD
-                    <input name="inputAttPeso" type="" class="form-control" id="inputAttPesoProduto" placeholder="Peso">
-=======
-                    <input name="inputPeso" type="tex" class="form-control" id="inputAttPesoProduto" placeholder="Peso">
->>>>>>> 8c190d660f99dc9780aacfa24edc2fe1ff83be8c
+                    <input name="inputPeso" type="tex" class="form-control" id="inputAttPesoProduto" placeholder="Peso ou quantidade. Ex.: 100mL, 1Kg ou 3UN">
                 </div>
             </div> 
             <!-- GRUPO -->  
@@ -131,22 +119,14 @@
             <div class="form-group">
                 <label for="inputValor" class="col-lg-2 control-label">Informação Nutricional</label>
                 <div class="col-lg-10">
-<<<<<<< HEAD
-                    <input name="inputAttValorEnergetico" type="" class="form-control" id="inputAttValorProduto" placeholder="Valor energético">
-=======
                     <input name="inputValorEnergetico" type="text" class="form-control" id="inputAttValorProduto" placeholder="Valor energético">
->>>>>>> 8c190d660f99dc9780aacfa24edc2fe1ff83be8c
                 </div>
             </div> 
             <!-- Marca -->
             <div class="form-group">
                 <label for="inputValor" class="col-lg-2 control-label">Marca</label>
                 <div class="col-lg-10">
-<<<<<<< HEAD
-                    <input name="inputAttMarcaProduto" type="" class="form-control" id="inputAttMarcaProduto" placeholder="Marca">
-=======
                     <input name="inputMarcaProduto" type="text" class="form-control" id="inputAttMarcaProduto" placeholder="Marca">
->>>>>>> 8c190d660f99dc9780aacfa24edc2fe1ff83be8c
                 </div>
             </div>
                      
