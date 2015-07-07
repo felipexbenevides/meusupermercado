@@ -17,6 +17,7 @@ var removeDatabase = function(){
     Lojas.remove({});
     Grupos.remove({});
 };
+
 var Schemas = {};
 
 Schemas.Endereco = new SimpleSchema({
