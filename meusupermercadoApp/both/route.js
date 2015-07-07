@@ -8,6 +8,31 @@ Router.route('/', function () {
 Router.route('/ofertas', function () {
   this.render('ofertas');
 });
+Router.route('/carnes', function(){
+  this.render('Carnes');
+});
+Router.route('/frios', function(){
+  this.render('Frios');
+});
+Router.route('/cereais', function(){
+  this.render('Cereais');
+});
+Router.route('/higiene', function(){
+  this.render('Higiene');
+});
+Router.route('/laticinios', function(){
+  this.render('Laticinios');
+});
+Router.route('/massas', function(){
+  this.render('Massas');
+});
+Router.route('/padaria', function(){
+  this.render('Padaria');
+});
+Router.route('/peixes', function(){
+  this.render('Peixes');
+});
+
 Router.route('/form', function () {
   this.render('cadastroLoja');
 });

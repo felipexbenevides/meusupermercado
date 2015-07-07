@@ -25,4 +25,15 @@ if (Meteor.isClient) {
 			return Produtos.find().fetch();
 		}
 	});
+	Template.selecionarGrupo.events = {
+		'change #selectGrupo' : function (event) {
+			console.log(event.target.value);
+			Session.set("grupoSelecionado", event.currentTarget.value);
+		}
+	}
+	Template.grupoOpcoes.helpers({
+		isGroupSelected:function(){
+			return Session.equals('grupoSelecionado', this._id) ? 'selected' : '';
+		}
+	});
 }

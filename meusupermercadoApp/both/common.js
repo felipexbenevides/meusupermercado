@@ -1,4 +1,4 @@
-Produtos = new Mongo.Collection("produtos");
+Produtos = new Mongo.Collection("produtosNovo");
 Lojas = new Mongo.Collection("lojas");
 Grupos = new Mongo.Collection("grupos");
 
@@ -6,10 +6,14 @@ Grupos = new Mongo.Collection("grupos");
 Produtos.remove( { } );
 Lojas.remove({});
 Grupos.remove({});
+
+a = ['Ofertas', 'Laticínios', 'Peixes', 'Frios', 'Carnes', 'Massas', 'Padaria'];
+a.forEach(function(str){
+    Grupos.insert({nomeGrupo : str});
+});
 */
-//Grupos.remove({});
 var removeDatabase = function(){
-    Produtos.remove( { } );
+    Produtos.remove( {} );
     Lojas.remove({});
     Grupos.remove({});
 };
@@ -57,7 +61,8 @@ Schemas.Endereco = new SimpleSchema({
 Schemas.Grupos = new SimpleSchema({
     nomeGrupo: {
         type: String,
-        label: "Nome do Grupo"
+        label: "Nome do Grupo",
+        unique: false
     }
 });
 
@@ -90,9 +95,8 @@ Schemas.Produtos = new SimpleSchema({
         type: String,
         optional: true
     },
-    grupo: {
-        type: Schemas.Grupos,
-        optional: false
+    nomeGrupo: {
+        type: String,
     }
 });
 
@@ -324,6 +328,7 @@ Schemas.User = new SimpleSchema({
         optional: true
     }
 });
+
 
 Grupos.attachSchema(Schemas.Grupos);
 Produtos.attachSchema(Schemas.Produtos);

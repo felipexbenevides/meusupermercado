@@ -20,7 +20,7 @@
 
 <template name="grupoOpcoes">
 {{#each grupos}}
-  <option class="{{_id}}" value="{{_id}}">{{nomeGrupo}}</option>
+  <option class="{{_id}}" value="{{nomeGrupo}}" {{isGroupSelected}}>{{nomeGrupo}}</option>
 {{/each}}
 </template>
 
