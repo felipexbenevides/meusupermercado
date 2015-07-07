@@ -85,8 +85,7 @@ Schemas.Produtos = new SimpleSchema({
         denyUpdate: true
     },
     peso: {
-        type: Number,
-        decimal: false
+        type: String
     },
     infoNutricional: {
         type: String,

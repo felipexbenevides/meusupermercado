@@ -50,14 +50,14 @@
                 <ul class="dropdown-menu">
                     {{#each grupos}}
                     <li role="presentation">
-                        <a href="/{{nomeGrupo}}">{{nomeGrupo}}</a>
+                        <a class="btn-nomeGrupo" id="{{nomeGrupo}}">{{nomeGrupo}}</a>
                     </li>
                     {{/each}}
                 </ul>
             </li>
             {{#each grupos}}
             <li role="presentation">
-                <a href="{{pathFor nomeGrupo}}">{{nomeGrupo}}</a>
+                <a id="{{nomeGrupo}}">{{nomeGrupo}}</a>
             </li>
             {{/each}}
         </ul>

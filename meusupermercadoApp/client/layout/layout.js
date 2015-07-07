@@ -5,4 +5,10 @@ if (Meteor.isClient) {
 			return Grupos.find().fetch();
 			}	
     });
+
+    Template.layout.events({
+    	'click .btn-nomeGrupo': function(event){
+    		Session.set('grupoListado', event.target.id);
+    	}
+    });
 }

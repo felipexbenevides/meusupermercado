@@ -1,8 +1,13 @@
 if (Meteor.isClient) {
 	Template.ofertas.helpers({
 		produtos:function () {
-	    	console.log(Session.get('lojaSelecionada'));
-	    	prods = Produtos.find({ grupo: 'Ofertas'});
+	    	if(Session.get('lojaSelecionada') == undefined){
+	    		Session.set('lojaSelecionada',Lojas.findOne({})._id);
+	    	}
+	    	if(Session.get('grupoListado') == undefined){
+	    		Session.set('grupoListado', 'Ofertas');
+	    	}
+	    	prods = Produtos.find({ grupo: Session.get('grupoListado')});
 	    	console.log(prods);
 			loja = Lojas.findOne({_id: Session.get('lojaSelecionada')});
 			console.log(loja);

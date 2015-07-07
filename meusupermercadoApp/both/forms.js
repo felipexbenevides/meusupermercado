@@ -105,7 +105,7 @@ if (Meteor.isClient) {
             var ret = [];
             itens.forEach(function(myDoc){
                 produto = Produtos.findOne({_id : myDoc.produto}); //erro nessa linha
-                var retorno = {_idItem: myDoc.codBarras, _idProduto : produto._id, nome : produto.nome, descricao: produto.descricao, peso : produto.peso, infoNutricional : produto.infoNutricional, marca: produto.marca, preco : myDoc.preco, desconto : myDoc.desconto, grupo: produto.grupo, quantidade: myDoc.quantidade};
+                var retorno = {_idItem: myDoc.codBarras, _idProduto : produto._id, nome : produto.nome, descricao: produto.descricao, peso : produto.peso, infoNutricional : produto.infoNutricional, marca: produto.marca, preco : myDoc.preco, desconto : myDoc.desconto, grupo: produto.nomeGrupo, quantidade: myDoc.quantidade};
                 console.log(myDoc);
                 ret.push(retorno);
             });
