@@ -111,6 +111,15 @@ if (Meteor.isClient) {
             });
             console.log(ret);
             return ret;
+            /*
+            var loja = Lojas.findOne({administrador:Meteor.userId()});
+            console.log('aqui');
+            Lojas.update({_id:loja._id},{ $set : {estoque : []}},function(error, result){
+                if (error){
+                    console.log(error);
+                }
+            });
+            return;*/
         }
     });
 
