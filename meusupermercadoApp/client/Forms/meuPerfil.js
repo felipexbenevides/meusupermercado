@@ -1,14 +1,18 @@
-Template.cadastroLoja.onRendered(function(){
-          $("#cadastroLojaForm").validate({
+Template.meuPerfil.onRendered(function(){
+          $("#cadastroUsuarioForm").validate({
         // Define as regras
         rules:{
-          nomeLoja:{
+          primeiroNome:{
             // campoNome será obrigatório (required) e terá tamanho mínimo (minLength)
             required: true, minlength: 5
           },
-          cnpj:{
+          sobrenome:{
             // campoNome será obrigatório (required) e terá tamanho mínimo (minLength)
-            required: true, rangelength: [14, 14], digits: true
+            required: true, minlength: 5
+          },          
+          cpf:{
+            // campoNome será obrigatório (required) e terá tamanho mínimo (minLength)
+            required: true, rangelength: [11,11], digits: true
           },  
           cep:{
             required: true,
@@ -22,7 +26,6 @@ Template.cadastroLoja.onRendered(function(){
             digits: true
           },  
           complemento:{
-            required: true, rangelength: [4, 25]
           },  
           bairro:{
             required: true, rangelength: [4, 25]
@@ -32,31 +35,20 @@ Template.cadastroLoja.onRendered(function(){
           },  
           estado:{
             required: true, rangelength: [2, 15]
-          },                                                            
-          administrador:{
-            required: true, email: true
-          } 
+          }
         },
         // Define as mensagens de erro para cada regra
         messages:{
-          nomeLoja:{
-            required: "¹ digite o nome da empresa.",
-            minlength: "O nome da empresa deve conter, no mínimo, 5 caracteres."
-          },
-          cnpj:{
+          cpf:{
             required: "¹ digite o cnpj.",
-            rangelength: "cnpj deve conter 14 caracteres.",
-            digits: 'apenas números. ex.:08064723000155.'
+            rangelength: "cnpj deve conter 11 caracteres.",
+            digits: 'apenas números. ex.:07270579444.'
           },
           cep:{
             required: '¹ digite o cep.',
             digits: 'cep inválido. ex.:56300000.'
 
-          },        
-          administrador:{
-            required: "¹ digite o email do administrador da loja.",
-            email: "email inválido. ex.: nome@dominio.com.",
-          }        
+          }    
         }
       });
   });
