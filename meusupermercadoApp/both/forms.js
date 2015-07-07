@@ -21,7 +21,6 @@ if (Meteor.isClient) {
             Meteor.users.update({ _id: Meteor.userId() }, { $set: { profile: user } });
         }
     });
-    
     Template.meuPerfil.onRendered(function(){
         $("#inputCEP").val(Meteor.users.findOne({ _id: Meteor.userId()}).profile.endereco.cep);
         $("#inputRua").val(Meteor.users.findOne({ _id: Meteor.userId()}).profile.endereco.rua);
@@ -77,18 +76,18 @@ if (Meteor.isClient) {
             var nomeProduto = event.target.inputNomeProduto.value;
             var descricaoProduto = event.target.inputDescricaoProduto.value;
             var peso = event.target.inputPesoProduto.value;
-            var grupo = Grupos.findOne({_id : $( "#selectGrupo" ).val()});
+            var grupo = Session.get('grupoSelecionado');
+            console.log(grupo);
             var infoNutricional = event.target.inputValorProduto.value;
             var marca = event.target.inputMarcaProduto.value;
             
-            Produtos.insert({ nome: nomeProduto, descricao: descricaoProduto, criadoEm: new Date, peso: peso, grupo: grupo, infoNutricional: infoNutricional, marca: marca }, function(error, result){
-                if(error){
-                    console.log(error.invalidKeys);
-                }
-                else{
-                    alert("Sucesso no cadastro");
-                }
-            });
+            if(nomeProduto == undefined){
+                alert('produto vazio');
+                return;
+            }
+
+            Produtos.insert({ nome: nomeProduto, descricao: descricaoProduto, criadoEm: new Date, peso: peso, nomeGrupo: grupo, infoNutricional: infoNutricional, marca: marca });
+            
             //db.Produtos.find().forEach( function(myDoc) { console.log(myDoc); } );
         }
     });
@@ -106,7 +105,7 @@ if (Meteor.isClient) {
             var ret = [];
             itens.forEach(function(myDoc){
                 produto = Produtos.findOne({_id : myDoc.produto});
-                var retorno = {_idItem: myDoc.codBarras, _idProduto : produto._id, nome : produto.nome, descricao: produto.descricao, peso : produto.peso, infoNutricional : produto.infoNutricional, marca: produto.marca, preco : myDoc.preco, desconto : myDoc.desconto, grupo: produto.grupo.nomeGrupo, quantidade: myDoc.quantidade};
+                var retorno = {_idItem: myDoc.codBarras, _idProduto : produto._id, nome : produto.nome, descricao: produto.descricao, peso : produto.peso, infoNutricional : produto.infoNutricional, marca: produto.marca, preco : myDoc.preco, desconto : myDoc.desconto, grupo: produto.grupo, quantidade: myDoc.quantidade};
                 console.log(myDoc);
                 ret.push(retorno);
             });
@@ -120,6 +119,7 @@ if (Meteor.isClient) {
             event.preventDefault();
 
             var produto = $( "#selectProduto" ).val();
+            console.log('produto:' + produto);
             var preco = event.target.inputPrecoItem.value;
             var codigo = event.target.inputCodBarrasItem.value;
             var desconto = event.target.inputDescontoItem.value
@@ -183,26 +183,58 @@ if (Meteor.isClient) {
 
     Template.meusProdutos.events({
         'click .btn-editar' : function (event) {
+            event.preventDefault();
+            Session.set('produtoEditar', event.target.value);
             var prod = Produtos.findOne({_id : event.target.value});
+            console.log('Produto:' + prod);
             $('#inputAttNomeProduto').val(prod.nome);
             $('#inputAttDescricaoProduto').val(prod.descricao);
             $('#inputAttPesoProduto').val(prod.peso);
-            $('.'+Grupos.findOne({nomeGrupo : prod.grupo.nomeGrupo})._id).attr("selected", true);
+            $('.'+Grupos.findOne({nomeGrupo : prod.nomeGrupo})._id).attr("selected", true);
+            Session.set('grupoSelecionado',prod.nomeGrupo);
             $('#inputAttValorProduto').val(prod.infoNutricional);
             $('#inputAttMarcaProduto').val(prod.marca);   
         }
     });
 
+    Template.atualizarProduto.events({
+        'submit form': function(event){
+            event.preventDefault();
+            console.log(Session.get('produtoEditar'));
+            var nomeProduto = event.target.inputAttNomeProduto.value;
+            var descricaoProduto = event.target.inputAttDescricaoProduto.value;
+            var peso = event.target.inputAttPeso.value;
+            var grupo = Session.get('grupoSelecionado');
+            console.log(grupo);
+            var infoNutricional = event.target.inputAttValorEnergetico.value;
+            var marca = event.target.inputAttMarcaProduto.value;
+            //console.log(Produtos.findOne({_id : $('#btnEditarProduto').val()}).grupo);
+            if(nomeProduto == undefined){
+                alert('error em nomeProduto');
+                return;
+            }
+            Produtos.update({_id : Session.get('produtoEditar') },{ $set: { nome: nomeProduto, descricao: descricaoProduto, peso: peso, nomeGrupo : grupo , infoNutricional: infoNutricional, marca: marca }}, function(error, result){
+                if(error){
+                    console.log(error.invalidKeys);
+                }
+                else{
+                    alert("Sucesso na atualização");
+                }
+            });
+        }
+    });
+
     Template.minhaLoja.onRendered(function(){
-        $('#inputName').val(Lojas.findOne({ administrador: Meteor.userId()}).nome);
-        $('#inputCNPJ').val(Lojas.findOne({ administrador: Meteor.userId()}).cnpj);
-        $("#inputCEP").val(Lojas.findOne({ administrador: Meteor.userId()}).endereco.cep);
-        $("#inputRua").val(Lojas.findOne({ administrador: Meteor.userId()}).endereco.rua);
-        $("#inputNum").val(Lojas.findOne({ administrador: Meteor.userId()}).endereco.numero);
-        $("#inputComp").val(Lojas.findOne({ administrador: Meteor.userId()}).endereco.complemento);
-        $("#inputBairro").val(Lojas.findOne({ administrador: Meteor.userId()}).endereco.bairro);
-        $("#inputCidade").val(Lojas.findOne({ administrador: Meteor.userId()}).endereco.cidade);
-        $("#inputEstado").val(Lojas.findOne({ administrador: Meteor.userId()}).endereco.estado);
+        loja = Lojas.findOne({ administrador: Meteor.userId()});
+        $('#inputName').val(loja.nome);
+        $('#inputCNPJ').val(loja.cnpj);
+        $("#inputCEP").val(loja.endereco.cep);
+        $("#inputRua").val(loja.endereco.rua);
+        $("#inputNum").val(loja.endereco.numero);
+        $("#inputComp").val(loja.endereco.complemento);
+        $("#inputBairro").val(loja.endereco.bairro);
+        $("#inputCidade").val(loja.endereco.cidade);
+        $("#inputEstado").val(loja.endereco.estado);
         $('#inputUsuario').attr("placeholder",Meteor.users.findOne({_id : Meteor.userId()}).emails[0].address);
         $('#inputUsuario').attr("disabled",true);
         });
