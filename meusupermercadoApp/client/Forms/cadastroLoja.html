@@ -1,31 +1,34 @@
 <template name="cadastroLoja">
     <div class="">
         <div class="container">
-            <div class="col-lg-6 ajuste">
+            <div class="col-lg-7 ajuste">
                 <div class="well well-lg">
-                    <form class="form-horizontal">
+                    <form id="cadastroLojaForm" class="form-horizontal">
                         <fieldset>
                             <legend>Cadastro Loja</legend>
                             <!-- NOME DA LOJA -->
                             <div class="form-group">
-                                <label for="inputName" class="col-lg-2 control-label">Empresa</label>
+                                <label for="inputName" class="col-lg-2 control-labelUSER">Empresa</label>
+                                {{> labelinput}}
                                 <div class="col-lg-10">
-                                    <input name="nomeLoja" type="" class="form-control" id="inputName" placeholder="Nome Fantasia">
-                                </div>
+                                    <input name="nomeLoja" type="text" class="form-control" id="inputName" placeholder="Nome Fantasia">
+                                </div>  
                             </div>
                             <!-- CNPJ -->
                             <div class="form-group">
-                                <label for="inputCNPJ" class="col-lg-2 control-label">CNPJ</label>
+                                <label for="inputCNPJ" class="col-lg-2 control-labelUSER">CNPJ</label>
+                                {{> labelinput}}
                                 <div class="col-lg-10">
-                                    <input name="cnpj" type="" class="form-control" id="inputCNPJ" placeholder="CNPJ">
+                                    <input name="cnpj" type="text" class="form-control" id="inputCNPJ" placeholder="CNPJ">
                                 </div>
                             </div>
                              {{> cadastroEndereco}}   
                             <!-- Usuario -->
                             <div class="form-group">
-                                <label for="inputUsuario" class="col-lg-2 control-label">Usuário</label>
+                                <label for="inputUsuario" class="col-lg-2 control-labelUSER">Usuário</label>
+                                {{> labelinput}}
                                 <div class="col-lg-10">
-                                    <input name="administrador" type="" class="form-control" id="inputUsuario" placeholder="Usuário">
+                                    <input name="administrador" type="text" class="form-control" id="inputUsuario" placeholder="Usuário">
                                     <br>
                                     <div class="togglebutton">
                                         <label>
@@ -41,6 +44,20 @@
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                 </div>
                             </div>
+                           
+
+                            <label for="nome">Nome</label>
+                            <input id="nome" name="campoNome" type="text" />
+
+                            <label for="email">E-mail</label>
+                            <input id="email" name="campoEmail" type="text" />
+
+                            <label for="mensagem">Mensagem</label>
+                            <textarea id="mensagem" name="campoMensagem"></textarea>
+
+                            <input class="submit" type="submit" value="Enviar" />
+
+                          
                         </fieldset>
                     </form>
                     <div id="source-button" class="btn btn-primary btn-xs" style="display: none;">&lt; &gt;</div>
