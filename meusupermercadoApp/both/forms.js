@@ -106,7 +106,8 @@ if (Meteor.isClient) {
             var ret = [];
             itens.forEach(function(myDoc){
                 produto = Produtos.findOne({_id : myDoc.produto});
-                var retorno = {nome : produto.nome, descricao: produto.descricao, peso : produto.peso, infoNutricional : produto.infoNutricional, marca: produto.marca, preco : myDoc.preco, desconto : myDoc.desconto, grupo: produto.grupo.nomeGrupo, quantidade: myDoc.quantidade};
+                var retorno = {_idItem: myDoc.codBarras, _idProduto : produto._id, nome : produto.nome, descricao: produto.descricao, peso : produto.peso, infoNutricional : produto.infoNutricional, marca: produto.marca, preco : myDoc.preco, desconto : myDoc.desconto, grupo: produto.grupo.nomeGrupo, quantidade: myDoc.quantidade};
+                console.log(myDoc);
                 ret.push(retorno);
             });
             console.log(ret);
@@ -123,8 +124,9 @@ if (Meteor.isClient) {
             var codigo = event.target.inputCodBarrasItem.value;
             var desconto = event.target.inputDescontoItem.value
             var quantidade = event.target.inputQuantidadeItem.value;
-            var estoque = [{produto: produto, preco: preco, desconto: desconto, codBarras: codigo, quantidade: quantidade}];
-            Lojas.update({_id : Lojas.findOne({administrador : Meteor.userId()})._id},{$set : {estoque : estoque}}, function(error, result){
+            var estoque = {produto: produto, preco: preco, desconto: desconto, codBarras: codigo, quantidade: quantidade};
+            //db.blogs.update({id:"001"}, {$push:{comments:{title:"commentX",content:".."}}}); 
+            Lojas.update({_id : Lojas.findOne({administrador : Meteor.userId()})._id},{$push :{ estoque : estoque }}, function(error, result){
                 if(error){
                     console.log(error.invalidKeys);
                 }
@@ -136,14 +138,46 @@ if (Meteor.isClient) {
     });
 
     Template.meusItens.events({
-        'click .btn-editar' : function (event) {
-            var prod = Produtos.findOne({_id : event.target.value});
-            $('#inputPrecoItem').val(prod.nome);
-            $('#inputAttDescricaoProduto').val(prod.descricao);
-            $('#inputAttPesoProduto').val(prod.peso);
-            $('.'+Grupos.findOne({nomeGrupo : prod.grupo.nomeGrupo})._id).attr("selected", true);
-            $('#inputAttValorProduto').val(prod.infoNutricional);
-            $('#inputAttMarcaProduto').val(prod.marca);   
+        'click .btn-editar-item' : function (event) {
+            var item = Lojas.findOne({administrador: Meteor.userId()}).estoque.filter(function(item){return item.codBarras == event.target.value});
+            console.log(item);
+            $('.'+item[0].produto).attr("selected", true);
+            $('#inputEditarPrecoItem').val(item[0].preco);
+            $('#inputEditarCodBarrasItem').val(event.target.value);
+            $('#inputEditarDescontoItem').val(item[0].desconto);
+            $('#inputEditarQuantidadeItem').val(item[0].quantidade);
+            $('#btnSubmitEditarItems').val(event.target.value);   
+        }
+    });
+
+    Template.editarItem.events({
+        'submit form': function(event){
+            event.preventDefault();
+
+            var produto = $( "#selectProduto" ).val();
+            var preco = event.target.inputEditarPrecoItem.value;
+            //var codigo = event.target.inputEditarCodBarrasItem.value;
+            var desconto = event.target.inputEditarDescontoItem.value
+            var quantidade = event.target.inputEditarQuantidadeItem.value;
+            var estoque = {produto: produto, preco: preco, desconto: desconto, codBarras: $('#btnSubmitEditarItems').val(), quantidade: quantidade};
+            //db.blogs.update({id:"001"}, {$push:{comments:{title:"commentX",content:".."}}}); 
+
+            Lojas.update({_id : Lojas.findOne({administrador : Meteor.userId()})._id},{$pull :{ estoque : { codBarras : $('#btnSubmitEditarItems').val()}}}, function(error, result){
+                if(error){
+                    console.log("error");
+                    console.log(error.invalidKeys);
+                }
+                else{
+                    console.log(result);
+                    Lojas.update({_id : Lojas.findOne({administrador : Meteor.userId()})._id},{$push :{ estoque : estoque }}, function(error, result){
+                        if(error){
+                            console.log(error.invalidKeys);
+                        }
+                        else
+                            console.log(result);
+                    });
+                }
+            });
         }
     });
 

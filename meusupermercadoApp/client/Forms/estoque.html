@@ -4,7 +4,7 @@
             <div class="col-sm-10 col-md-10">
                 <div class="">
                     <div class="container">
-                        <div class="col-lg-10 ajuste-top">
+                        <div class="col-lg-12 ajuste-top">
                             <div class="well well-lg">
                                 <h2 class="sub-header">Estoque</h2>
 						          <div class="table-responsive">
@@ -20,6 +20,7 @@
 						                  <th>Desconto</th>
 						                  <th>Grupo</th>
 						                  <th>Quantidade</th>
+						                  <th>Código</th>
 						                  <th>Editar</th>
 						                </tr>
 						              </thead>
@@ -35,7 +36,8 @@
 						                  <td>{{desconto}}</td>
 						                  <td>{{grupo}}</td>
 						                  <td>{{quantidade}}</td>
-						                  <td><button data-toggle="modal" data-target="#modalAtualizarItem" value="{{_id}}" class="btn btn-primary btn-editar">Editar</button></td>
+						                  <td>{{_idItem}}</td>
+						                  <td><button data-toggle="modal" data-target="#modalAtualizarItem" value="{{_idItem}}" class="btn btn-primary btn-editar-item">Editar</button></td>
 						                </tr>
 						              {{/each}}
 						              </tbody>
@@ -68,7 +70,7 @@
 	    </div>
 	  </div>
 
-	<div class="modal modal-wide fade" id="modalAtualizarProduto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal modal-wide fade" id="modalAtualizarItem" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	    <div class="modal-dialog" role="document">
 	      	<div class="modal-content">
 	        	<div class="modal-header">
@@ -77,7 +79,7 @@
 	          		</button>
 	          		<h2 class="modal-title">Editar Item</h2>
 	        	</div>
-	        	<div class="modal-body">{{> atualizarProduto}}</div>
+	        	<div class="modal-body">{{> editarItem}}</div>
 	    	</div>
 		</div>
 	</div>
@@ -115,7 +117,7 @@
             <div class="form-group">
                 <label for="inputQuantidadeItem" class="col-lg-2 control-label">Quantidade</label>
                 <div class="col-lg-10">
-                    <input name="inputQuantidadeItem" type="Number" min='1' class="form-control" id="inputQuantidadeItem" placeholder="1">
+                    <input name="inputQuantidadeItem" type="Number" min='0' class="form-control" id="inputQuantidadeItem" placeholder="1">
                 </div>
             </div>
                      
@@ -130,3 +132,45 @@
         </fieldset>
     </form>
 </template>
+
+<template name="editarItem">                    
+    <form class="form-horizontal">
+        <fieldset> 
+            <div class="form-group">
+                <label for="inputProduto" class="col-lg-2 control-label">Produto</label>
+                <div class="col-lg-10">
+                    {{> selecionarProduto}}
+                </div>
+            </div> 
+            <div class="form-group">
+                <label for="inputPreco" class="col-lg-2 control-label">Preço</label>
+                <div class="col-lg-10">
+                    <input name="inputPrecoItem" type="" class="form-control" id="inputEditarPrecoItem" placeholder="Preço">
+                </div>
+            </div>   
+            <div class="form-group">
+                <label for="inputDescontoItem" class="col-lg-2 control-label">Desconto</label>
+                <div class="col-lg-10">
+                    <input name="inputDescontoItem" type="" class="form-control" id="inputEditarDescontoItem" placeholder="Desconto">
+                </div>
+            </div> 
+            <div class="form-group">
+                <label for="inputQuantidadeItem" class="col-lg-2 control-label">Quantidade</label>
+                <div class="col-lg-10">
+                    <input name="inputQuantidadeItem" type="Number" min='1' class="form-control" id="inputEditarQuantidadeItem" placeholder="1">
+                </div>
+            </div>
+                     
+            <!-- - - - - - - - - - - - - - - - - - - - - - -  - -->                                 
+            
+            <div class="form-group">
+                <div class="col-lg-10 col-lg-offset-2">
+                    <button type="cancel" class="btn btn-default" data-dismiss="modal" aria-label="Close">Cancelar</button>
+                    <button type="submit" class="btn btn-primary" id="btnSubmitEditarItems">Atualizar Estoque</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</template>
+
+
