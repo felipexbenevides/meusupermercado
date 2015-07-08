@@ -5,8 +5,8 @@ Router.configure({
 Router.route('/', function () {
   this.render('home');
 });
-Router.route('/ofertas', function () {
-  this.render('ofertas');
+Router.route('/grupo', function () {
+  this.render('grupo');
 });
 Router.route('/carnes', function(){
   this.render('Carnes');
@@ -88,4 +88,5 @@ Router.route('/myform', { where: 'server' })
   .put(function () {
     // PUT /webhooks/stripe
   })
+  
 
