@@ -266,14 +266,20 @@ if (Meteor.isClient) {
             var endereco = { 'rua': rua, 'numero': numero, 'complemento': complemento, 'cep': cep,'bairro': bairro, 'cidade': cidade, 'estado': estado };
             //console.log(Meteor.users.findOne({ _id: Meteor.userId() }));
             //var admin = Meteor.users.findOne({ "emails.address": event.target.administrador.value });
-            Lojas.update({ _id: Lojas.findOne({administrador : Meteor.userId()})._id},{$set : { nome: nomeLoja, cnpj: cnpj, endereco: endereco }}, function(error, result){
-                if(error){
-                    console.log(error.invalidKeys)
-                }
-                else{
-                    console.log(result);
-                }
-            });   
+            if(Lojas.findOne({administrador : Meteor.userId()}) == undefined){
+                Lojas.insert({ nome: nomeLoja, cnpj: cnpj, endereco: endereco, administrador : Meteor.userId() }, function(error, result){
+            });
+            }
+            else{
+                Lojas.update({ _id: Lojas.findOne({administrador : Meteor.userId()})._id},{$set : { nome: nomeLoja, cnpj: cnpj, endereco: endereco }}, function(error, result){
+                    if(error){
+                        console.log(error.invalidKeys)
+                    }
+                    else{
+                        console.log(result);
+                    }
+                }); 
+            }  
         }
     }); 
           

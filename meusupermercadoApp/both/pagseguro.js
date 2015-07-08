@@ -194,7 +194,7 @@ console.log('--------------------------------------------'+x);
 
 PagSeguro = new PagSeguro('felipe__eu@hotmail.com', '2C05E090F0BA414A93D16F01725E693C');
 PagSeguro.setXML(x);
-PagSeguro.send();
+//PagSeguro.send();
 //console.log(PagSeguro.options.body);
 //console.log(PagSeguro);
 
