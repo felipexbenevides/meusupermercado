@@ -1,14 +1,26 @@
-// Template.ofertas.events({
-// 	'click .basketAdd': function (event) {
-// 		$('.basketAdd input').val() = $('.basketAdd input').val() + 1;
-// 	}
-// 	'click .basketRemove': function (event) {
-// 		if($('.basketAdd input').val() > 0){
-// 			$('.basketAdd input').val() = $('.basketAdd input').val() - 1;
-// 		}
-// 	}	
+Template.grupo.events({
+	'click .basketAdd': function (event) {
+		$("#inputID").val(parseInt($("#inputID").val()) + 1);
+	},
+	'click .basketRemove': function (event) {
+		if($('#inputID').val() > 0){
+			$('#inputID').val(parseInt($('#inputID').val()) - 1);
+		}
+	}
 
-// });
+});
+Template.grupo.onRendered(function(){
+    $("#basketFormID").validate({
+        // Define as regras
+        rules:{
+          qtd:{
+            // campoNome será obrigatório (required) e terá tamanho mínimo (minLength)
+            digits: true, maxlength:2
+          }
+        }
+    });
+});
+
 
 if (Meteor.isClient) {
 	Template.grupo.helpers({

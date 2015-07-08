@@ -7,8 +7,6 @@ Router.route('/', function () {
 });
 Router.route('/grupo', function () {
   this.render('grupo');
-});
-
 
 Router.route('/form', function () {
   this.render('cadastroLoja');
@@ -65,4 +63,5 @@ Router.route('/myform', { where: 'server' })
   .put(function () {
     // PUT /webhooks/stripe
   })
+  
 
