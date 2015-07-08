@@ -5,25 +5,9 @@
 				{{> controleEsquerda}}
 				<div class="col-sm-10 col-md-10">
 				{{#each produtos}}
-					<div class="col-lg-2">
-						<div class="panel panel-default">
-							<div class="panel-heading">{{nome}}</div>
-							<div class="panel-body">
-								<img class="img-responsive" src="/img/itens/0001-knorr.jpg" alt="Caldo Knorr">
-								<!-- <diasasv class="item-desc">{{}}</div>-->
-							</div>
-							<div class="panel-footer">
-								<b>
-									<span class='value1'>{{preco}}</span>
-									<!--<span class='value3'>99</span>-->
-								</b>
-							</div>
-						</div>
-					</div>
-				{{/each}}
 					<div class="col-lg-3">
 						<div class="panel panel-default">
-							<div class="panel-heading">Caldo de Galinha Knorr 570g</div>
+							<div class="panel-heading">{{nome}}</div>
 							<div class="panel-body">
 								<img class="img-responsive" src="/img/itens/0001-knorr.jpg" alt="Caldo Knorr">
 								<!-- <div class="item-desc">{{}}</div>-->
@@ -32,23 +16,21 @@
 							<form id="basketFormID" class="form-horizontal">
 							<fieldset><div class="form-group form-group-prod">
 								<div class="col-lg-5">
-	                                <input type="text" name="qtd" class="form-control form-control-prod" id="inputID" placeholder="" value="1">
-	                                <a href="#"><i class="mdi-content-remove basketRemove"></i></a>
-									<a href="#"><i class="mdi-content-add basketAdd" ></i></a>
-
+	                                <input type="Number" min="1" max="{{quantidade}}" name="qtd" class="form-control form-control-prod" id="{{codBarras}}" placeholder="" value="1">
+	                                <!--<a href="#"><i class="mdi-content-remove basketRemove"></i></a>
+									<a href="#"><i class="mdi-content-add basketAdd" ></i></a>-->
                                 </div>
                                 <div class="col-lg-5 precoProduto">
-                                <span class='label label-default value1'>R$2,90</span>
+                                <span class='label label-default value1'>{{preco}}</span>
                                 </div>
-                                <a href="#" class="btn btn-primary btn-fab btn-raised basketButton mdi-action-add-shopping-cart"></a>
-
+                                <a href="#" id="{{codBarras}}/{{quantidade}}/{{_idProduto}}" class="btn btn-primary btn-fab btn-raised basketButton mdi-action-add-shopping-cart"></a>
 							</div>
 							</fieldset>
 							</form>
-									<!--<span class='value3'>99</span>-->
 							</div>							
 						</div>
-					</div>					
+					</div>
+					{{/each}}					
 				</div>
 			</div>
 		</div>

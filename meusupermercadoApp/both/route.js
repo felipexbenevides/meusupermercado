@@ -7,6 +7,7 @@ Router.route('/', function () {
 });
 Router.route('/grupo', function () {
   this.render('grupo');
+});
 
 Router.route('/form', function () {
   this.render('cadastroLoja');
@@ -45,23 +46,21 @@ Transitioner.default({
   out: 'transition.fadeOut'
 });
 */
-Router.route('/myform', { where: 'server' })
-  .get(function () {
-    var req = this.request;
-    var response = this.response;
-    console.log(req);
-    this.response.end('404');
-  })
-  .post(function (data) {
-    var req = this.request;
-    console.log(req.body.test);
-    console.log(data);
-    var response = this.response;
+// Router.route('/myform', { where: 'server' })
+//   .get(function () {
+//     var req = this.request;
+//     var response = this.response;
+//     console.log(req);
+//     this.response.end('404');
+//   })
+//   .post(function (data) {
+//     var req = this.request;
+//     console.log(req.body.test);
+//     console.log(data);
+//     var response = this.response;
 
-    this.response.end('404');
-  })
-  .put(function () {
-    // PUT /webhooks/stripe
-  })
-  
-
+//     this.response.end('404');
+//   })
+//   .put(function () {
+//     // PUT /webhooks/stripe
+//   });
